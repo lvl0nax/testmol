@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120923124221) do
+ActiveRecord::Schema.define(:version => 20120923153850) do
 
   create_table "categories", :force => true do |t|
     t.string   "title"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(:version => 20120923124221) do
     t.integer  "rgt"
     t.integer  "parent_id"
     t.integer  "depth"
+    t.string   "slug"
   end
 
   create_table "products", :force => true do |t|

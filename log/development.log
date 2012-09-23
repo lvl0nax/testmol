@@ -7003,3 +7003,3386 @@ Processing by CategoriesController#show as HTML
   [1m[36mCategory Load (0.1ms)[0m  [1mSELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 9 LIMIT 1[0m
   Rendered categories/show.html.erb within layouts/application (0.9ms)
 Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 0.1ms)
+  [1m[36m (316.1ms)[0m  [1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (340.6ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)
+  [1m[36m (19.3ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Migrating to CreateCategories (20120923114259)
+  [1m[35m (156.6ms)[0m  CREATE TABLE `categories` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `description` text, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (54.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120923114259')[0m
+Migrating to CreateProducts (20120923114634)
+  [1m[35m (130.6ms)[0m  CREATE TABLE `products` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `slug` varchar(255), `photo` varchar(255), `description` text, `category_id` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (300.0ms)[0m  [1mCREATE INDEX `index_products_on_category_id` ON `products` (`category_id`)[0m
+  [1m[35m (55.0ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20120923114634')
+Migrating to AddColumnToCategories (20120923122721)
+  [1m[36m (267.3ms)[0m  [1mALTER TABLE `categories` ADD `lft` int(11)[0m
+  [1m[35m (43.1ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20120923122721')
+Migrating to AddColumnsToCategories (20120923124221)
+  [1m[36m (267.2ms)[0m  [1mALTER TABLE `categories` ADD `rgt` int(11)[0m
+  [1m[35m (268.8ms)[0m  ALTER TABLE `categories` ADD `parent_id` int(11)
+  [1m[36m (267.5ms)[0m  [1mALTER TABLE `categories` ADD `depth` int(11)[0m
+  [1m[35m (43.4ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20120923124221')
+  [1m[36m (0.4ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+
+
+Started GET "/" for 127.0.0.1 at 2012-09-23 19:19:44 +0400
+Processing by CategoriesController#index as HTML
+  [1m[36mCategory Load (0.4ms)[0m  [1mSELECT `categories`.* FROM `categories` ORDER BY lft ASC[0m
+  Rendered categories/sortable/base/_new.html.haml (16.7ms)
+  Rendered categories/sortable/base/_tree.html.haml (19.8ms)
+  Rendered categories/index.html.erb within layouts/application (24.8ms)
+Compiled categories.css  (50ms)  (pid 11793)
+Compiled products.css  (1ms)  (pid 11793)
+Compiled scaffolds.css  (12ms)  (pid 11793)
+Compiled tree.css  (8ms)  (pid 11793)
+Compiled sortable.css  (44ms)  (pid 11793)
+Compiled comments_tree.css  (15ms)  (pid 11793)
+Compiled application.css  (211ms)  (pid 11793)
+Compiled jquery.js  (5ms)  (pid 11793)
+Compiled jquery_ujs.js  (0ms)  (pid 11793)
+Compiled jquery-ui.js  (3ms)  (pid 11793)
+Compiled jquery.ui.nestedSortable.js  (0ms)  (pid 11793)
+Compiled sortable/base.js  (143ms)  (pid 11793)
+Compiled comments/base.js  (5ms)  (pid 11793)
+Compiled categories.js  (0ms)  (pid 11793)
+Compiled products.js  (0ms)  (pid 11793)
+Compiled application.js  (256ms)  (pid 11793)
+Completed 200 OK in 588ms (Views: 583.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2012-09-23 19:19:44 +0400
+Served asset /categories.css - 200 OK (2ms)
+
+
+Started GET "/assets/products.css?body=1" for 127.0.0.1 at 2012-09-23 19:19:44 +0400
+Served asset /products.css - 200 OK (3ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-23 19:19:44 +0400
+Served asset /scaffolds.css - 200 OK (2ms)
+
+
+Started GET "/assets/sortable.css?body=1" for 127.0.0.1 at 2012-09-23 19:19:44 +0400
+Served asset /sortable.css - 200 OK (2ms)
+
+
+Started GET "/assets/tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:19:44 +0400
+Served asset /tree.css - 200 OK (3ms)
+
+
+Started GET "/assets/comments_tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:19:44 +0400
+Served asset /comments_tree.css - 200 OK (2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-23 19:19:44 +0400
+Served asset /application.css - 200 OK (27ms)
+
+
+Started GET "/assets/comments/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:19:45 +0400
+Served asset /comments/base.js - 200 OK (3ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-09-23 19:19:45 +0400
+Served asset /jquery-ui.js - 200 OK (3ms)
+
+
+Started GET "/assets/jquery.ui.nestedSortable.js?body=1" for 127.0.0.1 at 2012-09-23 19:19:45 +0400
+Served asset /jquery.ui.nestedSortable.js - 200 OK (6ms)
+
+
+Started GET "/assets/sortable/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:19:45 +0400
+Served asset /sortable/base.js - 200 OK (3ms)
+
+
+Started GET "/assets/categories.js?body=1" for 127.0.0.1 at 2012-09-23 19:19:45 +0400
+Served asset /categories.js - 200 OK (2ms)
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2012-09-23 19:19:45 +0400
+Served asset /products.js - 200 OK (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-23 19:19:45 +0400
+Served asset /jquery_ujs.js - 200 OK (3ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-23 19:19:45 +0400
+Served asset /jquery.js - 200 OK (5ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-23 19:19:45 +0400
+Served asset /application.js - 200 OK (17ms)
+
+
+Started GET "/assets/iconza/blue/add.png" for 127.0.0.1 at 2012-09-23 19:19:45 +0400
+Served asset /iconza/blue/add.png - 200 OK (6ms)
+
+
+Started GET "/categories/new" for 127.0.0.1 at 2012-09-23 19:19:55 +0400
+Processing by CategoriesController#new as HTML
+  Rendered categories/_form.html.erb (215.7ms)
+  Rendered categories/new.html.erb within layouts/application (217.1ms)
+Completed 200 OK in 253ms (Views: 241.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/categories" for 127.0.0.1 at 2012-09-23 19:20:08 +0400
+Processing by CategoriesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"oHAIrik0v3KswWcp7LKJ0aWFkVq1DueHLEo+7Y5/+2g=", "category"=>{"title"=>"1111111111", "description"=>"1111111111"}, "commit"=>"Create Category"}
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mCategory Load (0.5ms)[0m  [1mSELECT `categories`.* FROM `categories` ORDER BY `rgt` desc LIMIT 1 FOR UPDATE[0m
+  [1m[35mSQL (13.2ms)[0m  INSERT INTO `categories` (`created_at`, `depth`, `description`, `lft`, `parent_id`, `rgt`, `title`, `updated_at`) VALUES ('2012-09-23 15:20:08', NULL, '1111111111', 1, NULL, 2, '1111111111', '2012-09-23 15:20:08')
+  [1m[36mCategory Load (46.4ms)[0m  [1mSELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 1 LIMIT 1[0m
+  [1m[35mSQL (39.4ms)[0m  UPDATE `categories` SET `depth` = 0 WHERE `categories`.`id` = 1 ORDER BY `lft`
+  [1m[36m (60.6ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/categories/1
+Completed 302 Found in 289ms (ActiveRecord: 160.2ms)
+
+
+Started GET "/categories/1" for 127.0.0.1 at 2012-09-23 19:20:09 +0400
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mCategory Load (0.6ms)[0m  SELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 1 LIMIT 1
+  Rendered categories/show.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 15ms (Views: 11.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2012-09-23 19:20:16 +0400
+Processing by CategoriesController#index as HTML
+  [1m[36mCategory Load (0.3ms)[0m  [1mSELECT `categories`.* FROM `categories` ORDER BY lft ASC[0m
+  Rendered categories/sortable/base/_controls.html.haml (2.2ms)
+  Rendered categories/sortable/base/_link.html.haml (29.3ms)
+  Rendered categories/sortable/base/_node.html.haml (31.7ms)
+  Rendered categories/sortable/base/_new.html.haml (0.5ms)
+  Rendered categories/sortable/base/_tree.html.haml (2.2ms)
+  Rendered categories/index.html.erb within layouts/application (36.3ms)
+Completed 200 OK in 46ms (Views: 44.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:16 +0400
+Served asset /tree.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/sortable.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:16 +0400
+Served asset /sortable.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:16 +0400
+Served asset /jquery.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:16 +0400
+Served asset /jquery-ui.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/comments_tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:16 +0400
+Served asset /comments_tree.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:16 +0400
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.ui.nestedSortable.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:16 +0400
+Served asset /jquery.ui.nestedSortable.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sortable/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:16 +0400
+Served asset /sortable/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:16 +0400
+Served asset /comments/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/iconza/blue/add.png" for 127.0.0.1 at 2012-09-23 19:20:16 +0400
+Served asset /iconza/blue/add.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/iconza/blue/edit.png" for 127.0.0.1 at 2012-09-23 19:20:16 +0400
+Served asset /iconza/blue/edit.png - 200 OK (10ms)
+
+
+Started GET "/assets/iconza/blue/move.png" for 127.0.0.1 at 2012-09-23 19:20:16 +0400
+Served asset /iconza/blue/move.png - 200 OK (8ms)
+
+
+Started GET "/assets/iconza/blue/delete.png" for 127.0.0.1 at 2012-09-23 19:20:16 +0400
+Served asset /iconza/blue/delete.png - 200 OK (9ms)
+
+
+Started GET "/categories/new" for 127.0.0.1 at 2012-09-23 19:20:27 +0400
+Processing by CategoriesController#new as HTML
+  Rendered categories/_form.html.erb (7.9ms)
+  Rendered categories/new.html.erb within layouts/application (9.4ms)
+Completed 200 OK in 18ms (Views: 17.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:27 +0400
+Served asset /categories.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:27 +0400
+Served asset /products.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:27 +0400
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments_tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:27 +0400
+Served asset /comments_tree.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:27 +0400
+Served asset /tree.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:27 +0400
+Served asset /jquery.js - 304 Not Modified (10ms)
+
+
+Started GET "/assets/sortable.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:27 +0400
+Served asset /sortable.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.ui.nestedSortable.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:27 +0400
+Served asset /jquery.ui.nestedSortable.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:27 +0400
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:27 +0400
+Served asset /jquery-ui.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/sortable/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:27 +0400
+Served asset /sortable/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:27 +0400
+Served asset /comments/base.js - 304 Not Modified (0ms)
+
+
+Started POST "/categories" for 127.0.0.1 at 2012-09-23 19:20:36 +0400
+Processing by CategoriesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"oHAIrik0v3KswWcp7LKJ0aWFkVq1DueHLEo+7Y5/+2g=", "category"=>{"title"=>"2222", "description"=>"222222222\r\n"}, "commit"=>"Create Category"}
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mCategory Load (0.3ms)[0m  [1mSELECT `categories`.* FROM `categories` ORDER BY `rgt` desc LIMIT 1 FOR UPDATE[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `categories` (`created_at`, `depth`, `description`, `lft`, `parent_id`, `rgt`, `title`, `updated_at`) VALUES ('2012-09-23 15:20:36', NULL, '222222222\r\n', 3, NULL, 4, '2222', '2012-09-23 15:20:36')
+  [1m[36mCategory Load (0.4ms)[0m  [1mSELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 2 LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE `categories` SET `depth` = 0 WHERE `categories`.`id` = 2 ORDER BY `lft`
+  [1m[36m (108.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/categories/2
+Completed 302 Found in 118ms (ActiveRecord: 109.8ms)
+
+
+Started GET "/categories/2" for 127.0.0.1 at 2012-09-23 19:20:37 +0400
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mCategory Load (0.3ms)[0m  SELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 2 LIMIT 1
+  Rendered categories/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 37ms (Views: 35.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:37 +0400
+Served asset /application.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:37 +0400
+Served asset /categories.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/products.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:37 +0400
+Served asset /products.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:37 +0400
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sortable.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:37 +0400
+Served asset /sortable.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments_tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:37 +0400
+Served asset /comments_tree.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:37 +0400
+Served asset /tree.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:37 +0400
+Served asset /jquery.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:37 +0400
+Served asset /jquery_ujs.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:37 +0400
+Served asset /jquery-ui.js - 304 Not Modified (9ms)
+
+
+Started GET "/assets/jquery.ui.nestedSortable.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:37 +0400
+Served asset /jquery.ui.nestedSortable.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sortable/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:37 +0400
+Served asset /sortable/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:37 +0400
+Served asset /comments/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/categories.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:37 +0400
+Served asset /categories.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:37 +0400
+Served asset /products.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:37 +0400
+Served asset /application.js - 304 Not Modified (4ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2012-09-23 19:20:44 +0400
+Processing by CategoriesController#index as HTML
+  [1m[36mCategory Load (0.3ms)[0m  [1mSELECT `categories`.* FROM `categories` ORDER BY lft ASC[0m
+  Rendered categories/sortable/base/_controls.html.haml (0.9ms)
+  Rendered categories/sortable/base/_link.html.haml (2.4ms)
+  Rendered categories/sortable/base/_node.html.haml (3.4ms)
+  Rendered categories/sortable/base/_controls.html.haml (0.7ms)
+  Rendered categories/sortable/base/_link.html.haml (1.8ms)
+  Rendered categories/sortable/base/_node.html.haml (2.7ms)
+  Rendered categories/sortable/base/_new.html.haml (0.4ms)
+  Rendered categories/sortable/base/_tree.html.haml (1.9ms)
+  Rendered categories/index.html.erb within layouts/application (10.9ms)
+Completed 200 OK in 21ms (Views: 19.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:44 +0400
+Served asset /application.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:44 +0400
+Served asset /categories.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:44 +0400
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:44 +0400
+Served asset /products.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:44 +0400
+Served asset /tree.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/sortable.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:44 +0400
+Served asset /sortable.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/comments_tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:44 +0400
+Served asset /comments_tree.css - 304 Not Modified (10ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:44 +0400
+Served asset /jquery.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:44 +0400
+Served asset /jquery_ujs.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:44 +0400
+Served asset /jquery-ui.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/jquery.ui.nestedSortable.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:44 +0400
+Served asset /jquery.ui.nestedSortable.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sortable/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:44 +0400
+Served asset /sortable/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:44 +0400
+Served asset /comments/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/categories.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:44 +0400
+Served asset /categories.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:44 +0400
+Served asset /products.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:44 +0400
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/iconza/blue/add.png" for 127.0.0.1 at 2012-09-23 19:20:44 +0400
+Served asset /iconza/blue/add.png - 304 Not Modified (0ms)
+
+
+Started GET "/categories/new" for 127.0.0.1 at 2012-09-23 19:20:47 +0400
+Processing by CategoriesController#new as HTML
+  Rendered categories/_form.html.erb (8.3ms)
+  Rendered categories/new.html.erb within layouts/application (9.6ms)
+Completed 200 OK in 47ms (Views: 46.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:47 +0400
+Served asset /scaffolds.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/products.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:47 +0400
+Served asset /products.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:47 +0400
+Served asset /tree.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:47 +0400
+Served asset /application.css - 304 Not Modified (7ms)
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:47 +0400
+Served asset /categories.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sortable.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:47 +0400
+Served asset /sortable.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments_tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:47 +0400
+Served asset /comments_tree.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:47 +0400
+Served asset /jquery.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:47 +0400
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:47 +0400
+Served asset /jquery-ui.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/jquery.ui.nestedSortable.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:47 +0400
+Served asset /jquery.ui.nestedSortable.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sortable/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:47 +0400
+Served asset /sortable/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:47 +0400
+Served asset /comments/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/categories.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:47 +0400
+Served asset /categories.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:47 +0400
+Served asset /products.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:47 +0400
+Served asset /application.js - 304 Not Modified (4ms)
+
+
+Started POST "/categories" for 127.0.0.1 at 2012-09-23 19:20:53 +0400
+Processing by CategoriesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"oHAIrik0v3KswWcp7LKJ0aWFkVq1DueHLEo+7Y5/+2g=", "category"=>{"title"=>"33333", "description"=>"33333333"}, "commit"=>"Create Category"}
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mCategory Load (0.4ms)[0m  [1mSELECT `categories`.* FROM `categories` ORDER BY `rgt` desc LIMIT 1 FOR UPDATE[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `categories` (`created_at`, `depth`, `description`, `lft`, `parent_id`, `rgt`, `title`, `updated_at`) VALUES ('2012-09-23 15:20:53', NULL, '33333333', 5, NULL, 6, '33333', '2012-09-23 15:20:53')
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 3 LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE `categories` SET `depth` = 0 WHERE `categories`.`id` = 3 ORDER BY `lft`
+  [1m[36m (72.4ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/categories/3
+Completed 302 Found in 79ms (ActiveRecord: 73.5ms)
+
+
+Started GET "/categories/3" for 127.0.0.1 at 2012-09-23 19:20:53 +0400
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mCategory Load (0.4ms)[0m  SELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 3 LIMIT 1
+  Rendered categories/show.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 20ms (Views: 17.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:53 +0400
+Served asset /application.css - 304 Not Modified (7ms)
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:53 +0400
+Served asset /categories.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:53 +0400
+Served asset /tree.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:53 +0400
+Served asset /products.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:53 +0400
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sortable.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:54 +0400
+Served asset /sortable.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments_tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:54 +0400
+Served asset /comments_tree.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:54 +0400
+Served asset /jquery.js - 304 Not Modified (8ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:54 +0400
+Served asset /jquery_ujs.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:54 +0400
+Served asset /jquery-ui.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/jquery.ui.nestedSortable.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:54 +0400
+Served asset /jquery.ui.nestedSortable.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sortable/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:54 +0400
+Served asset /sortable/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:54 +0400
+Served asset /comments/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/categories.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:54 +0400
+Served asset /categories.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:54 +0400
+Served asset /products.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:54 +0400
+Served asset /application.js - 304 Not Modified (5ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2012-09-23 19:20:56 +0400
+Processing by CategoriesController#index as HTML
+  [1m[36mCategory Load (0.7ms)[0m  [1mSELECT `categories`.* FROM `categories` ORDER BY lft ASC[0m
+  Rendered categories/sortable/base/_controls.html.haml (2.2ms)
+  Rendered categories/sortable/base/_link.html.haml (5.8ms)
+  Rendered categories/sortable/base/_node.html.haml (9.1ms)
+  Rendered categories/sortable/base/_controls.html.haml (0.7ms)
+  Rendered categories/sortable/base/_link.html.haml (1.9ms)
+  Rendered categories/sortable/base/_node.html.haml (2.7ms)
+  Rendered categories/sortable/base/_controls.html.haml (0.8ms)
+  Rendered categories/sortable/base/_link.html.haml (1.9ms)
+  Rendered categories/sortable/base/_node.html.haml (2.7ms)
+  Rendered categories/sortable/base/_new.html.haml (0.4ms)
+  Rendered categories/sortable/base/_tree.html.haml (1.8ms)
+  Rendered categories/index.html.erb within layouts/application (19.6ms)
+Completed 200 OK in 29ms (Views: 27.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:56 +0400
+Served asset /application.css - 304 Not Modified (40ms)
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:56 +0400
+Served asset /categories.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:56 +0400
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:56 +0400
+Served asset /products.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sortable.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:56 +0400
+Served asset /sortable.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:56 +0400
+Served asset /tree.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments_tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:56 +0400
+Served asset /comments_tree.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:56 +0400
+Served asset /jquery.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:56 +0400
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:56 +0400
+Served asset /jquery-ui.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/jquery.ui.nestedSortable.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:56 +0400
+Served asset /jquery.ui.nestedSortable.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sortable/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:56 +0400
+Served asset /sortable/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:56 +0400
+Served asset /comments/base.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/categories.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:56 +0400
+Served asset /categories.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:56 +0400
+Served asset /products.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:56 +0400
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/iconza/blue/add.png" for 127.0.0.1 at 2012-09-23 19:20:56 +0400
+Served asset /iconza/blue/add.png - 304 Not Modified (0ms)
+
+
+Started GET "/categories/1" for 127.0.0.1 at 2012-09-23 19:20:56 +0400
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mCategory Load (0.3ms)[0m  SELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 1 LIMIT 1
+  Rendered categories/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 10ms (Views: 8.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:57 +0400
+Served asset /application.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:57 +0400
+Served asset /categories.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:57 +0400
+Served asset /products.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sortable.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:57 +0400
+Served asset /sortable.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:57 +0400
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:57 +0400
+Served asset /jquery.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:57 +0400
+Served asset /tree.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments_tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:57 +0400
+Served asset /comments_tree.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:57 +0400
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:57 +0400
+Served asset /jquery-ui.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/jquery.ui.nestedSortable.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:57 +0400
+Served asset /jquery.ui.nestedSortable.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sortable/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:57 +0400
+Served asset /sortable/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:57 +0400
+Served asset /comments/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/categories.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:57 +0400
+Served asset /categories.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:57 +0400
+Served asset /application.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:57 +0400
+Served asset /products.js - 304 Not Modified (0ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2012-09-23 19:20:59 +0400
+Processing by CategoriesController#index as HTML
+  [1m[36mCategory Load (0.3ms)[0m  [1mSELECT `categories`.* FROM `categories` ORDER BY lft ASC[0m
+  Rendered categories/sortable/base/_controls.html.haml (0.9ms)
+  Rendered categories/sortable/base/_link.html.haml (2.4ms)
+  Rendered categories/sortable/base/_node.html.haml (3.4ms)
+  Rendered categories/sortable/base/_controls.html.haml (0.8ms)
+  Rendered categories/sortable/base/_link.html.haml (1.8ms)
+  Rendered categories/sortable/base/_node.html.haml (2.7ms)
+  Rendered categories/sortable/base/_controls.html.haml (0.7ms)
+  Rendered categories/sortable/base/_link.html.haml (1.8ms)
+  Rendered categories/sortable/base/_node.html.haml (2.6ms)
+  Rendered categories/sortable/base/_new.html.haml (0.4ms)
+  Rendered categories/sortable/base/_tree.html.haml (1.8ms)
+  Rendered categories/index.html.erb within layouts/application (13.8ms)
+Completed 200 OK in 22ms (Views: 21.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/products.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:59 +0400
+Served asset /products.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:59 +0400
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sortable.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:59 +0400
+Served asset /sortable.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:59 +0400
+Served asset /categories.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:59 +0400
+Served asset /tree.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:59 +0400
+Served asset /application.css - 304 Not Modified (45ms)
+
+
+Started GET "/assets/comments_tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:20:59 +0400
+Served asset /comments_tree.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:59 +0400
+Served asset /jquery.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:59 +0400
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:59 +0400
+Served asset /jquery-ui.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/jquery.ui.nestedSortable.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:59 +0400
+Served asset /jquery.ui.nestedSortable.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sortable/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:59 +0400
+Served asset /sortable/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:59 +0400
+Served asset /comments/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/categories.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:59 +0400
+Served asset /categories.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:59 +0400
+Served asset /products.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-23 19:20:59 +0400
+Served asset /application.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/iconza/blue/add.png" for 127.0.0.1 at 2012-09-23 19:20:59 +0400
+Served asset /iconza/blue/add.png - 304 Not Modified (0ms)
+
+
+Started POST "/categories/rebuild" for 127.0.0.1 at 2012-09-23 19:21:05 +0400
+Processing by CategoriesController#rebuild as JS
+  Parameters: {"id"=>"2_category", "parent_id"=>"1_category"}
+  [1m[35mCategory Load (0.3ms)[0m  SELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 2 LIMIT 1
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT `lft`, `rgt`, `parent_id` FROM `categories` WHERE `categories`.`id` = 1 LIMIT 1 FOR UPDATE[0m
+  [1m[35mCategory Load (0.1ms)[0m  SELECT `lft`, `rgt`, `parent_id` FROM `categories` WHERE `categories`.`id` = 2 LIMIT 1 FOR UPDATE
+  [1m[36mSQL (24.7ms)[0m  [1mUPDATE `categories` SET `lft` = CASE WHEN `lft` BETWEEN 2 AND 2 THEN `lft` + 4 - 2 WHEN `lft` BETWEEN 3 AND 4 THEN `lft` + 2 - 3 ELSE `lft` END, `rgt` = CASE WHEN `rgt` BETWEEN 2 AND 2 THEN `rgt` + 4 - 2 WHEN `rgt` BETWEEN 3 AND 4 THEN `rgt` + 2 - 3 ELSE `rgt` END, `parent_id` = CASE WHEN id = 2 THEN 1 ELSE `parent_id` END ORDER BY `lft`[0m
+  [1m[35m (81.6ms)[0m  COMMIT
+  [1m[36mCategory Load (0.3ms)[0m  [1mSELECT `lft`, `rgt`, `parent_id` FROM `categories` WHERE `categories`.`id` = 1 LIMIT 1 FOR UPDATE[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mCategory Load (0.4ms)[0m  [1mSELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 2 LIMIT 1[0m
+  [1m[35m (0.8ms)[0m  SELECT COUNT(*) FROM `categories` WHERE (`categories`.`lft` <= 2 AND `categories`.`rgt` >= 3) AND (`categories`.id != 2)
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE `categories` SET `depth` = 1 WHERE `categories`.`id` = 2 ORDER BY `lft`[0m
+  [1m[35m (66.5ms)[0m  COMMIT
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM `categories` WHERE (`categories`.`lft` <= 2 AND `categories`.`rgt` >= 3) AND (`categories`.id != 2)[0m
+  [1m[35mCategory Load (0.6ms)[0m  SELECT `categories`.* FROM `categories` WHERE `categories`.`parent_id` = 2 ORDER BY lft
+  [1m[36mCategory Load (0.4ms)[0m  [1mSELECT `lft`, `rgt`, `parent_id` FROM `categories` WHERE `categories`.`id` = 2 LIMIT 1 FOR UPDATE[0m
+  Rendered text template (0.0ms)
+Completed 200 OK in 283ms (Views: 14.4ms | ActiveRecord: 177.1ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2012-09-23 19:21:50 +0400
+Processing by CategoriesController#index as HTML
+  [1m[35mCategory Load (0.7ms)[0m  SELECT `categories`.* FROM `categories` ORDER BY lft ASC
+  Rendered categories/tree/base/_link.html.haml (2.0ms)
+  Rendered categories/tree/base/_node.html.haml (6.6ms)
+  Rendered categories/tree/base/_link.html.haml (0.4ms)
+  Rendered categories/tree/base/_children.html.haml (0.9ms)
+  Rendered categories/tree/base/_node.html.haml (2.7ms)
+  Rendered categories/tree/base/_link.html.haml (0.6ms)
+  Rendered categories/tree/base/_node.html.haml (1.3ms)
+  Rendered categories/tree/base/_tree.html.haml (1.4ms)
+  Rendered categories/index.html.erb within layouts/application (17.7ms)
+Completed 200 OK in 28ms (Views: 25.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-23 19:21:50 +0400
+Served asset /application.css - 304 Not Modified (11ms)
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2012-09-23 19:21:50 +0400
+Served asset /categories.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:21:50 +0400
+Served asset /tree.css - 304 Not Modified (21ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-23 19:21:50 +0400
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.css?body=1" for 127.0.0.1 at 2012-09-23 19:21:50 +0400
+Served asset /products.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/sortable.css?body=1" for 127.0.0.1 at 2012-09-23 19:21:50 +0400
+Served asset /sortable.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments_tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:21:50 +0400
+Served asset /comments_tree.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-23 19:21:50 +0400
+Served asset /jquery.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-23 19:21:50 +0400
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-09-23 19:21:50 +0400
+Served asset /jquery-ui.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.ui.nestedSortable.js?body=1" for 127.0.0.1 at 2012-09-23 19:21:50 +0400
+Served asset /jquery.ui.nestedSortable.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:21:50 +0400
+Served asset /comments/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sortable/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:21:50 +0400
+Served asset /sortable/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/categories.js?body=1" for 127.0.0.1 at 2012-09-23 19:21:50 +0400
+Served asset /categories.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2012-09-23 19:21:50 +0400
+Served asset /products.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-23 19:21:50 +0400
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/categories/manage" for 127.0.0.1 at 2012-09-23 19:22:39 +0400
+Processing by CategoriesController#manage as HTML
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT `categories`.* FROM `categories` ORDER BY lft ASC[0m
+  Rendered categories/sortable/base/_controls.html.haml (0.8ms)
+  Rendered categories/sortable/base/_link.html.haml (2.2ms)
+  Rendered categories/sortable/base/_node.html.haml (3.2ms)
+  Rendered categories/sortable/base/_controls.html.haml (0.5ms)
+  Rendered categories/sortable/base/_link.html.haml (1.6ms)
+  Rendered categories/sortable/base/_children.html.haml (0.9ms)
+  Rendered categories/sortable/base/_node.html.haml (3.9ms)
+  Rendered categories/sortable/base/_controls.html.haml (0.8ms)
+  Rendered categories/sortable/base/_link.html.haml (2.2ms)
+  Rendered categories/sortable/base/_node.html.haml (3.1ms)
+  Rendered categories/sortable/base/_new.html.haml (0.4ms)
+  Rendered categories/sortable/base/_tree.html.haml (1.8ms)
+  Rendered categories/manage.html.erb within layouts/application (16.9ms)
+Completed 200 OK in 27ms (Views: 25.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-23 19:22:39 +0400
+Served asset /application.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2012-09-23 19:22:39 +0400
+Served asset /categories.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/products.css?body=1" for 127.0.0.1 at 2012-09-23 19:22:39 +0400
+Served asset /products.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-23 19:22:39 +0400
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sortable.css?body=1" for 127.0.0.1 at 2012-09-23 19:22:39 +0400
+Served asset /sortable.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:22:39 +0400
+Served asset /tree.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments_tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:22:39 +0400
+Served asset /comments_tree.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-23 19:22:39 +0400
+Served asset /jquery.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-23 19:22:39 +0400
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.ui.nestedSortable.js?body=1" for 127.0.0.1 at 2012-09-23 19:22:39 +0400
+Served asset /jquery.ui.nestedSortable.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-09-23 19:22:39 +0400
+Served asset /jquery-ui.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/sortable/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:22:39 +0400
+Served asset /sortable/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:22:39 +0400
+Served asset /comments/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/categories.js?body=1" for 127.0.0.1 at 2012-09-23 19:22:39 +0400
+Served asset /categories.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2012-09-23 19:22:39 +0400
+Served asset /products.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-23 19:22:39 +0400
+Served asset /application.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/iconza/blue/add.png" for 127.0.0.1 at 2012-09-23 19:22:39 +0400
+Served asset /iconza/blue/add.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/iconza/gray/delete.png" for 127.0.0.1 at 2012-09-23 19:22:39 +0400
+Served asset /iconza/gray/delete.png - 200 OK (5ms)
+
+
+Started GET "/assets/iconza/blue/move.png" for 127.0.0.1 at 2012-09-23 19:22:39 +0400
+Served asset /iconza/blue/move.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/iconza/blue/delete.png" for 127.0.0.1 at 2012-09-23 19:22:39 +0400
+Served asset /iconza/blue/delete.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/iconza/blue/edit.png" for 127.0.0.1 at 2012-09-23 19:22:39 +0400
+Served asset /iconza/blue/edit.png - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-09-23 19:24:32 +0400
+Processing by CategoriesController#index as HTML
+  [1m[35mCategory Load (0.5ms)[0m  SELECT `categories`.* FROM `categories` ORDER BY lft ASC
+  Rendered categories/tree/base/_link.html.haml (0.7ms)
+  Rendered categories/tree/base/_node.html.haml (1.6ms)
+  Rendered categories/tree/base/_link.html.haml (0.7ms)
+  Rendered categories/tree/base/_children.html.haml (0.1ms)
+  Rendered categories/tree/base/_node.html.haml (2.5ms)
+  Rendered categories/tree/base/_link.html.haml (0.6ms)
+  Rendered categories/tree/base/_node.html.haml (1.7ms)
+  Rendered categories/tree/base/_tree.html.haml (0.1ms)
+  Rendered categories/index.html.erb within layouts/application (9.3ms)
+Completed 200 OK in 47ms (Views: 44.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-23 19:24:32 +0400
+Served asset /application.css - 304 Not Modified (10ms)
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2012-09-23 19:24:32 +0400
+Served asset /categories.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:24:32 +0400
+Served asset /tree.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sortable.css?body=1" for 127.0.0.1 at 2012-09-23 19:24:32 +0400
+Served asset /sortable.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.css?body=1" for 127.0.0.1 at 2012-09-23 19:24:32 +0400
+Served asset /products.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-23 19:24:32 +0400
+Served asset /scaffolds.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/comments_tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:24:32 +0400
+Served asset /comments_tree.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-23 19:24:32 +0400
+Served asset /jquery.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-23 19:24:32 +0400
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-09-23 19:24:32 +0400
+Served asset /jquery-ui.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/jquery.ui.nestedSortable.js?body=1" for 127.0.0.1 at 2012-09-23 19:24:32 +0400
+Served asset /jquery.ui.nestedSortable.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sortable/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:24:32 +0400
+Served asset /sortable/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:24:32 +0400
+Served asset /comments/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/categories.js?body=1" for 127.0.0.1 at 2012-09-23 19:24:32 +0400
+Served asset /categories.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2012-09-23 19:24:32 +0400
+Served asset /products.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-23 19:24:32 +0400
+Served asset /application.js - 304 Not Modified (4ms)
+
+
+Started GET "/categories/1" for 127.0.0.1 at 2012-09-23 19:24:45 +0400
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCategory Load (0.3ms)[0m  [1mSELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 1 LIMIT 1[0m
+  Rendered categories/show.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 14ms (Views: 12.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-23 19:24:45 +0400
+Served asset /application.css - 304 Not Modified (10ms)
+
+
+Started GET "/assets/products.css?body=1" for 127.0.0.1 at 2012-09-23 19:24:45 +0400
+Served asset /products.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2012-09-23 19:24:45 +0400
+Served asset /categories.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-23 19:24:45 +0400
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:24:45 +0400
+Served asset /tree.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/sortable.css?body=1" for 127.0.0.1 at 2012-09-23 19:24:45 +0400
+Served asset /sortable.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/comments_tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:24:45 +0400
+Served asset /comments_tree.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-23 19:24:45 +0400
+Served asset /jquery.js - 304 Not Modified (9ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-23 19:24:45 +0400
+Served asset /jquery_ujs.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-09-23 19:24:45 +0400
+Served asset /jquery-ui.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/jquery.ui.nestedSortable.js?body=1" for 127.0.0.1 at 2012-09-23 19:24:45 +0400
+Served asset /jquery.ui.nestedSortable.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sortable/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:24:45 +0400
+Served asset /sortable/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:24:45 +0400
+Served asset /comments/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/categories.js?body=1" for 127.0.0.1 at 2012-09-23 19:24:45 +0400
+Served asset /categories.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2012-09-23 19:24:45 +0400
+Served asset /products.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-23 19:24:45 +0400
+Served asset /application.js - 304 Not Modified (5ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2012-09-23 19:24:48 +0400
+Processing by CategoriesController#index as HTML
+  [1m[35mCategory Load (0.1ms)[0m  SELECT `categories`.* FROM `categories` ORDER BY lft ASC
+  Rendered categories/tree/base/_link.html.haml (1.6ms)
+  Rendered categories/tree/base/_node.html.haml (3.9ms)
+  Rendered categories/tree/base/_link.html.haml (0.4ms)
+  Rendered categories/tree/base/_children.html.haml (0.1ms)
+  Rendered categories/tree/base/_node.html.haml (1.8ms)
+  Rendered categories/tree/base/_link.html.haml (0.4ms)
+  Rendered categories/tree/base/_node.html.haml (1.1ms)
+  Rendered categories/tree/base/_tree.html.haml (0.1ms)
+  Rendered categories/index.html.erb within layouts/application (10.9ms)
+Completed 200 OK in 19ms (Views: 18.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-23 19:24:49 +0400
+Served asset /application.css - 304 Not Modified (10ms)
+
+
+Started GET "/assets/products.css?body=1" for 127.0.0.1 at 2012-09-23 19:24:49 +0400
+Served asset /products.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-23 19:24:49 +0400
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sortable.css?body=1" for 127.0.0.1 at 2012-09-23 19:24:49 +0400
+Served asset /sortable.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2012-09-23 19:24:49 +0400
+Served asset /categories.css - 304 Not Modified (34ms)
+
+
+Started GET "/assets/tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:24:49 +0400
+Served asset /tree.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments_tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:24:49 +0400
+Served asset /comments_tree.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-23 19:24:49 +0400
+Served asset /jquery.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-23 19:24:49 +0400
+Served asset /jquery_ujs.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-09-23 19:24:49 +0400
+Served asset /jquery-ui.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery.ui.nestedSortable.js?body=1" for 127.0.0.1 at 2012-09-23 19:24:49 +0400
+Served asset /jquery.ui.nestedSortable.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/sortable/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:24:49 +0400
+Served asset /sortable/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:24:49 +0400
+Served asset /comments/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/categories.js?body=1" for 127.0.0.1 at 2012-09-23 19:24:49 +0400
+Served asset /categories.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-23 19:24:49 +0400
+Served asset /application.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2012-09-23 19:24:49 +0400
+Served asset /products.js - 304 Not Modified (0ms)
+
+
+Started GET "/categories/manage" for 127.0.0.1 at 2012-09-23 19:24:50 +0400
+Processing by CategoriesController#manage as HTML
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT `categories`.* FROM `categories` ORDER BY lft ASC[0m
+  Rendered categories/sortable/base/_controls.html.haml (0.8ms)
+  Rendered categories/sortable/base/_link.html.haml (2.2ms)
+  Rendered categories/sortable/base/_node.html.haml (3.2ms)
+  Rendered categories/sortable/base/_controls.html.haml (0.5ms)
+  Rendered categories/sortable/base/_link.html.haml (1.6ms)
+  Rendered categories/sortable/base/_children.html.haml (0.1ms)
+  Rendered categories/sortable/base/_node.html.haml (3.1ms)
+  Rendered categories/sortable/base/_controls.html.haml (0.7ms)
+  Rendered categories/sortable/base/_link.html.haml (1.8ms)
+  Rendered categories/sortable/base/_node.html.haml (2.7ms)
+  Rendered categories/sortable/base/_new.html.haml (0.4ms)
+  Rendered categories/sortable/base/_tree.html.haml (2.0ms)
+  Rendered categories/manage.html.erb within layouts/application (14.2ms)
+Completed 200 OK in 26ms (Views: 24.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-23 19:24:50 +0400
+Served asset /application.css - 304 Not Modified (10ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-23 19:24:50 +0400
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2012-09-23 19:24:50 +0400
+Served asset /categories.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sortable.css?body=1" for 127.0.0.1 at 2012-09-23 19:24:50 +0400
+Served asset /sortable.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:24:50 +0400
+Served asset /tree.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/products.css?body=1" for 127.0.0.1 at 2012-09-23 19:24:50 +0400
+Served asset /products.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments_tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:24:50 +0400
+Served asset /comments_tree.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-23 19:24:50 +0400
+Served asset /jquery.js - 304 Not Modified (10ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-23 19:24:50 +0400
+Served asset /jquery_ujs.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-09-23 19:24:50 +0400
+Served asset /jquery-ui.js - 304 Not Modified (9ms)
+
+
+Started GET "/assets/jquery.ui.nestedSortable.js?body=1" for 127.0.0.1 at 2012-09-23 19:24:50 +0400
+Served asset /jquery.ui.nestedSortable.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sortable/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:24:50 +0400
+Served asset /sortable/base.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/comments/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:24:50 +0400
+Served asset /comments/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/categories.js?body=1" for 127.0.0.1 at 2012-09-23 19:24:50 +0400
+Served asset /categories.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2012-09-23 19:24:50 +0400
+Served asset /products.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-23 19:24:50 +0400
+Served asset /application.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/iconza/blue/add.png" for 127.0.0.1 at 2012-09-23 19:24:50 +0400
+Served asset /iconza/blue/add.png - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-09-23 19:25:48 +0400
+Processing by CategoriesController#index as HTML
+  [1m[35mCategory Load (0.1ms)[0m  SELECT `categories`.* FROM `categories` ORDER BY lft ASC
+  Rendered categories/tree/base/_link.html.haml (0.6ms)
+  Rendered categories/tree/base/_node.html.haml (1.6ms)
+  Rendered categories/tree/base/_link.html.haml (0.4ms)
+  Rendered categories/tree/base/_children.html.haml (0.2ms)
+  Rendered categories/tree/base/_node.html.haml (1.9ms)
+  Rendered categories/tree/base/_link.html.haml (0.6ms)
+  Rendered categories/tree/base/_node.html.haml (1.5ms)
+  Rendered categories/tree/base/_tree.html.haml (0.2ms)
+  Rendered categories/index.html.erb within layouts/application (8.9ms)
+Completed 200 OK in 18ms (Views: 16.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-23 19:25:48 +0400
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2012-09-23 19:25:48 +0400
+Served asset /categories.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-23 19:25:49 +0400
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.css?body=1" for 127.0.0.1 at 2012-09-23 19:25:49 +0400
+Served asset /products.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:25:49 +0400
+Served asset /tree.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/comments_tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:25:49 +0400
+Served asset /comments_tree.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sortable.css?body=1" for 127.0.0.1 at 2012-09-23 19:25:49 +0400
+Served asset /sortable.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-23 19:25:49 +0400
+Served asset /jquery_ujs.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-23 19:25:49 +0400
+Served asset /jquery.js - 304 Not Modified (9ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-09-23 19:25:49 +0400
+Served asset /jquery-ui.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/jquery.ui.nestedSortable.js?body=1" for 127.0.0.1 at 2012-09-23 19:25:49 +0400
+Served asset /jquery.ui.nestedSortable.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sortable/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:25:49 +0400
+Served asset /sortable/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:25:49 +0400
+Served asset /comments/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/categories.js?body=1" for 127.0.0.1 at 2012-09-23 19:25:49 +0400
+Served asset /categories.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2012-09-23 19:25:49 +0400
+Served asset /products.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-23 19:25:49 +0400
+Served asset /application.js - 304 Not Modified (4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-09-23 19:26:34 +0400
+Processing by CategoriesController#index as HTML
+  [1m[36mCategory Load (0.8ms)[0m  [1mSELECT `categories`.* FROM `categories` ORDER BY lft ASC[0m
+  Rendered categories/tree/base/_link.html.haml (0.6ms)
+  Rendered categories/tree/base/_node.html.haml (1.6ms)
+  Rendered categories/tree/base/_link.html.haml (0.4ms)
+  Rendered categories/tree/base/_children.html.haml (0.1ms)
+  Rendered categories/tree/base/_node.html.haml (1.8ms)
+  Rendered categories/tree/base/_link.html.haml (0.4ms)
+  Rendered categories/tree/base/_node.html.haml (1.1ms)
+  Rendered categories/tree/base/_tree.html.haml (0.1ms)
+  Rendered categories/index.html.erb within layouts/application (9.8ms)
+Completed 200 OK in 22ms (Views: 19.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-23 19:26:34 +0400
+Served asset /application.css - 304 Not Modified (10ms)
+
+
+Started GET "/assets/products.css?body=1" for 127.0.0.1 at 2012-09-23 19:26:34 +0400
+Served asset /products.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-23 19:26:34 +0400
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2012-09-23 19:26:34 +0400
+Served asset /categories.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sortable.css?body=1" for 127.0.0.1 at 2012-09-23 19:26:34 +0400
+Served asset /sortable.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:26:34 +0400
+Served asset /tree.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments_tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:26:34 +0400
+Served asset /comments_tree.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-23 19:26:34 +0400
+Served asset /jquery.js - 304 Not Modified (9ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-23 19:26:34 +0400
+Served asset /jquery_ujs.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-09-23 19:26:34 +0400
+Served asset /jquery-ui.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/jquery.ui.nestedSortable.js?body=1" for 127.0.0.1 at 2012-09-23 19:26:34 +0400
+Served asset /jquery.ui.nestedSortable.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sortable/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:26:34 +0400
+Served asset /sortable/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:26:34 +0400
+Served asset /comments/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/categories.js?body=1" for 127.0.0.1 at 2012-09-23 19:26:34 +0400
+Served asset /categories.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2012-09-23 19:26:34 +0400
+Served asset /products.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-23 19:26:34 +0400
+Served asset /application.js - 304 Not Modified (4ms)
+
+
+Started GET "/categories/manage" for 127.0.0.1 at 2012-09-23 19:26:37 +0400
+Processing by CategoriesController#manage as HTML
+  [1m[35mCategory Load (0.1ms)[0m  SELECT `categories`.* FROM `categories` ORDER BY lft ASC
+  Rendered categories/manage.html.erb within layouts/application (238.5ms)
+Completed 500 Internal Server Error in 243ms
+
+ActionView::Template::Error (undefined method `lonk_to' for #<#<Class:0x99dfe3c>:0xa50b374>):
+    1: <%= lonk_to "home", root_path %>
+    2: <%= sortable_tree @categories, :path => 'categories/sortable/base', :type => :sortable, :new_url => new_category_path, :max_levels => 4
+    3: %>
+  app/views/categories/manage.html.erb:1:in `_app_views_categories_manage_html_erb__26516937_86529160'
+
+
+  Rendered /home/monax/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (7.5ms)
+  Rendered /home/monax/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+  Rendered /home/monax/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (18.2ms)
+
+
+Started GET "/categories/manage" for 127.0.0.1 at 2012-09-23 19:26:47 +0400
+Processing by CategoriesController#manage as HTML
+  [1m[36mCategory Load (0.3ms)[0m  [1mSELECT `categories`.* FROM `categories` ORDER BY lft ASC[0m
+  Rendered categories/sortable/base/_controls.html.haml (0.8ms)
+  Rendered categories/sortable/base/_link.html.haml (2.2ms)
+  Rendered categories/sortable/base/_node.html.haml (3.2ms)
+  Rendered categories/sortable/base/_controls.html.haml (0.5ms)
+  Rendered categories/sortable/base/_link.html.haml (1.6ms)
+  Rendered categories/sortable/base/_children.html.haml (0.1ms)
+  Rendered categories/sortable/base/_node.html.haml (3.1ms)
+  Rendered categories/sortable/base/_controls.html.haml (0.8ms)
+  Rendered categories/sortable/base/_link.html.haml (1.9ms)
+  Rendered categories/sortable/base/_node.html.haml (2.9ms)
+  Rendered categories/sortable/base/_new.html.haml (0.4ms)
+  Rendered categories/sortable/base/_tree.html.haml (1.8ms)
+  Rendered categories/manage.html.erb within layouts/application (15.4ms)
+Completed 200 OK in 26ms (Views: 23.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-23 19:26:48 +0400
+Served asset /application.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-23 19:26:48 +0400
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.css?body=1" for 127.0.0.1 at 2012-09-23 19:26:48 +0400
+Served asset /products.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:26:48 +0400
+Served asset /tree.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sortable.css?body=1" for 127.0.0.1 at 2012-09-23 19:26:48 +0400
+Served asset /sortable.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2012-09-23 19:26:48 +0400
+Served asset /categories.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments_tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:26:48 +0400
+Served asset /comments_tree.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-23 19:26:48 +0400
+Served asset /jquery.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-23 19:26:48 +0400
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-09-23 19:26:48 +0400
+Served asset /jquery-ui.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/jquery.ui.nestedSortable.js?body=1" for 127.0.0.1 at 2012-09-23 19:26:48 +0400
+Served asset /jquery.ui.nestedSortable.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sortable/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:26:48 +0400
+Served asset /sortable/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:26:48 +0400
+Served asset /comments/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/categories.js?body=1" for 127.0.0.1 at 2012-09-23 19:26:48 +0400
+Served asset /categories.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2012-09-23 19:26:48 +0400
+Served asset /products.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-23 19:26:48 +0400
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/iconza/blue/add.png" for 127.0.0.1 at 2012-09-23 19:26:48 +0400
+Served asset /iconza/blue/add.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/iconza/blue/edit.png" for 127.0.0.1 at 2012-09-23 19:26:48 +0400
+Served asset /iconza/blue/edit.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/iconza/blue/move.png" for 127.0.0.1 at 2012-09-23 19:26:48 +0400
+Served asset /iconza/blue/move.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/iconza/blue/delete.png" for 127.0.0.1 at 2012-09-23 19:26:48 +0400
+Served asset /iconza/blue/delete.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/iconza/gray/delete.png" for 127.0.0.1 at 2012-09-23 19:26:48 +0400
+Served asset /iconza/gray/delete.png - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-09-23 19:26:51 +0400
+Processing by CategoriesController#index as HTML
+  [1m[35mCategory Load (0.1ms)[0m  SELECT `categories`.* FROM `categories` ORDER BY lft ASC
+  Rendered categories/tree/base/_link.html.haml (0.6ms)
+  Rendered categories/tree/base/_node.html.haml (1.5ms)
+  Rendered categories/tree/base/_link.html.haml (0.4ms)
+  Rendered categories/tree/base/_children.html.haml (0.1ms)
+  Rendered categories/tree/base/_node.html.haml (1.7ms)
+  Rendered categories/tree/base/_link.html.haml (0.3ms)
+  Rendered categories/tree/base/_node.html.haml (1.1ms)
+  Rendered categories/tree/base/_tree.html.haml (0.1ms)
+  Rendered categories/index.html.erb within layouts/application (7.5ms)
+Completed 200 OK in 42ms (Views: 40.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2012-09-23 19:26:51 +0400
+Served asset /categories.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-23 19:26:51 +0400
+Served asset /scaffolds.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/products.css?body=1" for 127.0.0.1 at 2012-09-23 19:26:51 +0400
+Served asset /products.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-23 19:26:51 +0400
+Served asset /application.css - 304 Not Modified (11ms)
+
+
+Started GET "/assets/sortable.css?body=1" for 127.0.0.1 at 2012-09-23 19:26:51 +0400
+Served asset /sortable.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:26:51 +0400
+Served asset /tree.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments_tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:26:51 +0400
+Served asset /comments_tree.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-23 19:26:51 +0400
+Served asset /jquery.js - 304 Not Modified (10ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-23 19:26:51 +0400
+Served asset /jquery_ujs.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-09-23 19:26:51 +0400
+Served asset /jquery-ui.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/jquery.ui.nestedSortable.js?body=1" for 127.0.0.1 at 2012-09-23 19:26:51 +0400
+Served asset /jquery.ui.nestedSortable.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sortable/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:26:51 +0400
+Served asset /sortable/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:26:51 +0400
+Served asset /comments/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/categories.js?body=1" for 127.0.0.1 at 2012-09-23 19:26:51 +0400
+Served asset /categories.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2012-09-23 19:26:51 +0400
+Served asset /products.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-23 19:26:51 +0400
+Served asset /application.js - 304 Not Modified (5ms)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2012-09-23 19:26:55 +0400
+Processing by ProductsController#new as HTML
+  [1m[36mCategory Load (0.6ms)[0m  [1mSELECT `categories`.* FROM `categories` [0m
+  Rendered products/_form.html.erb (17.1ms)
+  Rendered products/new.html.erb within layouts/application (18.9ms)
+Completed 200 OK in 40ms (Views: 31.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-23 19:26:55 +0400
+Served asset /application.css - 304 Not Modified (14ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-23 19:26:55 +0400
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:26:55 +0400
+Served asset /tree.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2012-09-23 19:26:55 +0400
+Served asset /categories.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.css?body=1" for 127.0.0.1 at 2012-09-23 19:26:55 +0400
+Served asset /products.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/sortable.css?body=1" for 127.0.0.1 at 2012-09-23 19:26:55 +0400
+Served asset /sortable.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments_tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:26:55 +0400
+Served asset /comments_tree.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-23 19:26:55 +0400
+Served asset /jquery.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-23 19:26:55 +0400
+Served asset /jquery_ujs.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-09-23 19:26:55 +0400
+Served asset /jquery-ui.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/jquery.ui.nestedSortable.js?body=1" for 127.0.0.1 at 2012-09-23 19:26:55 +0400
+Served asset /jquery.ui.nestedSortable.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sortable/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:26:55 +0400
+Served asset /sortable/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:26:55 +0400
+Served asset /comments/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/categories.js?body=1" for 127.0.0.1 at 2012-09-23 19:26:55 +0400
+Served asset /categories.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2012-09-23 19:26:55 +0400
+Served asset /products.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-23 19:26:55 +0400
+Served asset /application.js - 304 Not Modified (5ms)
+
+
+Started GET "/categories/1" for 127.0.0.1 at 2012-09-23 19:30:43 +0400
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mCategory Load (0.3ms)[0m  SELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 1 LIMIT 1
+  Rendered categories/show.html.erb within layouts/application (124.8ms)
+Completed 200 OK in 145ms (Views: 134.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-23 19:30:43 +0400
+Served asset /application.css - 304 Not Modified (10ms)
+
+
+Started GET "/assets/products.css?body=1" for 127.0.0.1 at 2012-09-23 19:30:43 +0400
+Served asset /products.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2012-09-23 19:30:43 +0400
+Served asset /categories.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-23 19:30:43 +0400
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:30:43 +0400
+Served asset /tree.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sortable.css?body=1" for 127.0.0.1 at 2012-09-23 19:30:43 +0400
+Served asset /sortable.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments_tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:30:43 +0400
+Served asset /comments_tree.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-23 19:30:43 +0400
+Served asset /jquery.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-23 19:30:43 +0400
+Served asset /jquery_ujs.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-09-23 19:30:43 +0400
+Served asset /jquery-ui.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/jquery.ui.nestedSortable.js?body=1" for 127.0.0.1 at 2012-09-23 19:30:43 +0400
+Served asset /jquery.ui.nestedSortable.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sortable/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:30:43 +0400
+Served asset /sortable/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:30:43 +0400
+Served asset /comments/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/categories.js?body=1" for 127.0.0.1 at 2012-09-23 19:30:43 +0400
+Served asset /categories.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2012-09-23 19:30:43 +0400
+Served asset /products.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-23 19:30:43 +0400
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/categories/1" for 127.0.0.1 at 2012-09-23 19:30:48 +0400
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 1 LIMIT 1[0m
+  Rendered categories/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 11ms (Views: 9.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-23 19:30:48 +0400
+Served asset /application.css - 304 Not Modified (12ms)
+
+
+Started GET "/assets/products.css?body=1" for 127.0.0.1 at 2012-09-23 19:30:48 +0400
+Served asset /products.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sortable.css?body=1" for 127.0.0.1 at 2012-09-23 19:30:48 +0400
+Served asset /sortable.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:30:48 +0400
+Served asset /tree.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2012-09-23 19:30:48 +0400
+Served asset /categories.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/comments_tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:30:48 +0400
+Served asset /comments_tree.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-23 19:30:48 +0400
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-23 19:30:48 +0400
+Served asset /jquery.js - 304 Not Modified (10ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-23 19:30:48 +0400
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-09-23 19:30:48 +0400
+Served asset /jquery-ui.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/jquery.ui.nestedSortable.js?body=1" for 127.0.0.1 at 2012-09-23 19:30:48 +0400
+Served asset /jquery.ui.nestedSortable.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sortable/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:30:48 +0400
+Served asset /sortable/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:30:48 +0400
+Served asset /comments/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/categories.js?body=1" for 127.0.0.1 at 2012-09-23 19:30:48 +0400
+Served asset /categories.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2012-09-23 19:30:48 +0400
+Served asset /products.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-23 19:30:48 +0400
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2012-09-23 19:30:51 +0400
+Processing by CategoriesController#index as HTML
+  [1m[35mCategory Load (0.3ms)[0m  SELECT `categories`.* FROM `categories` ORDER BY lft ASC
+  Rendered categories/tree/base/_link.html.haml (1.4ms)
+  Rendered categories/tree/base/_node.html.haml (2.3ms)
+  Rendered categories/tree/base/_link.html.haml (0.5ms)
+  Rendered categories/tree/base/_children.html.haml (0.1ms)
+  Rendered categories/tree/base/_node.html.haml (1.8ms)
+  Rendered categories/tree/base/_link.html.haml (0.4ms)
+  Rendered categories/tree/base/_node.html.haml (1.2ms)
+  Rendered categories/tree/base/_tree.html.haml (0.1ms)
+  Rendered categories/index.html.erb within layouts/application (8.7ms)
+Completed 200 OK in 22ms (Views: 16.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-23 19:30:51 +0400
+Served asset /application.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/products.css?body=1" for 127.0.0.1 at 2012-09-23 19:30:51 +0400
+Served asset /products.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-23 19:30:51 +0400
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:30:51 +0400
+Served asset /tree.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2012-09-23 19:30:51 +0400
+Served asset /categories.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sortable.css?body=1" for 127.0.0.1 at 2012-09-23 19:30:51 +0400
+Served asset /sortable.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments_tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:30:51 +0400
+Served asset /comments_tree.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-23 19:30:51 +0400
+Served asset /jquery.js - 304 Not Modified (14ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-23 19:30:51 +0400
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-09-23 19:30:51 +0400
+Served asset /jquery-ui.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/jquery.ui.nestedSortable.js?body=1" for 127.0.0.1 at 2012-09-23 19:30:51 +0400
+Served asset /jquery.ui.nestedSortable.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sortable/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:30:51 +0400
+Served asset /sortable/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:30:51 +0400
+Served asset /comments/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/categories.js?body=1" for 127.0.0.1 at 2012-09-23 19:30:51 +0400
+Served asset /categories.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2012-09-23 19:30:52 +0400
+Served asset /products.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-23 19:30:52 +0400
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/categories/2-2222" for 127.0.0.1 at 2012-09-23 19:30:55 +0400
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"2-2222"}
+  [1m[36mCategory Load (0.7ms)[0m  [1mSELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 2 LIMIT 1[0m
+  Rendered categories/show.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 46ms (Views: 42.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-23 19:30:55 +0400
+Served asset /application.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/products.css?body=1" for 127.0.0.1 at 2012-09-23 19:30:55 +0400
+Served asset /products.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-23 19:30:55 +0400
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2012-09-23 19:30:55 +0400
+Served asset /categories.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sortable.css?body=1" for 127.0.0.1 at 2012-09-23 19:30:55 +0400
+Served asset /sortable.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:30:55 +0400
+Served asset /tree.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments_tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:30:55 +0400
+Served asset /comments_tree.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-23 19:30:55 +0400
+Served asset /jquery.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-23 19:30:55 +0400
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-09-23 19:30:55 +0400
+Served asset /jquery-ui.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/jquery.ui.nestedSortable.js?body=1" for 127.0.0.1 at 2012-09-23 19:30:55 +0400
+Served asset /jquery.ui.nestedSortable.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sortable/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:30:55 +0400
+Served asset /sortable/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:30:55 +0400
+Served asset /comments/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/categories.js?body=1" for 127.0.0.1 at 2012-09-23 19:30:55 +0400
+Served asset /categories.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2012-09-23 19:30:55 +0400
+Served asset /products.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-23 19:30:55 +0400
+Served asset /application.js - 304 Not Modified (4ms)
+
+
+Started GET "/categories/1-1111111111" for 127.0.0.1 at 2012-09-23 19:31:03 +0400
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"1-1111111111"}
+  [1m[35mCategory Load (0.1ms)[0m  SELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 1 LIMIT 1
+  Rendered categories/show.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 16ms (Views: 14.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-23 19:31:03 +0400
+Served asset /application.css - 304 Not Modified (11ms)
+
+
+Started GET "/assets/sortable.css?body=1" for 127.0.0.1 at 2012-09-23 19:31:03 +0400
+Served asset /sortable.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-23 19:31:03 +0400
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2012-09-23 19:31:03 +0400
+Served asset /categories.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:31:03 +0400
+Served asset /tree.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/products.css?body=1" for 127.0.0.1 at 2012-09-23 19:31:03 +0400
+Served asset /products.css - 304 Not Modified (8ms)
+
+
+Started GET "/assets/comments_tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:31:03 +0400
+Served asset /comments_tree.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-23 19:31:03 +0400
+Served asset /jquery.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-23 19:31:03 +0400
+Served asset /jquery_ujs.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-09-23 19:31:03 +0400
+Served asset /jquery-ui.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/jquery.ui.nestedSortable.js?body=1" for 127.0.0.1 at 2012-09-23 19:31:03 +0400
+Served asset /jquery.ui.nestedSortable.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sortable/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:31:03 +0400
+Served asset /sortable/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:31:03 +0400
+Served asset /comments/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/categories.js?body=1" for 127.0.0.1 at 2012-09-23 19:31:03 +0400
+Served asset /categories.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2012-09-23 19:31:03 +0400
+Served asset /products.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-23 19:31:03 +0400
+Served asset /application.js - 304 Not Modified (4ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2012-09-23 19:31:21 +0400
+Processing by CategoriesController#index as HTML
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT `categories`.* FROM `categories` ORDER BY lft ASC[0m
+  Rendered categories/tree/base/_link.html.haml (1.3ms)
+  Rendered categories/tree/base/_node.html.haml (2.3ms)
+  Rendered categories/tree/base/_link.html.haml (0.5ms)
+  Rendered categories/tree/base/_children.html.haml (0.1ms)
+  Rendered categories/tree/base/_node.html.haml (1.9ms)
+  Rendered categories/tree/base/_link.html.haml (0.4ms)
+  Rendered categories/tree/base/_node.html.haml (1.2ms)
+  Rendered categories/tree/base/_tree.html.haml (0.1ms)
+  Rendered categories/index.html.erb within layouts/application (8.8ms)
+Completed 200 OK in 27ms (Views: 17.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-23 19:31:21 +0400
+Served asset /application.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-23 19:31:21 +0400
+Served asset /scaffolds.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2012-09-23 19:31:21 +0400
+Served asset /categories.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:31:21 +0400
+Served asset /tree.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.css?body=1" for 127.0.0.1 at 2012-09-23 19:31:21 +0400
+Served asset /products.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/sortable.css?body=1" for 127.0.0.1 at 2012-09-23 19:31:21 +0400
+Served asset /sortable.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments_tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:31:21 +0400
+Served asset /comments_tree.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-23 19:31:21 +0400
+Served asset /jquery.js - 304 Not Modified (9ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-23 19:31:21 +0400
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-09-23 19:31:21 +0400
+Served asset /jquery-ui.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery.ui.nestedSortable.js?body=1" for 127.0.0.1 at 2012-09-23 19:31:21 +0400
+Served asset /jquery.ui.nestedSortable.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sortable/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:31:21 +0400
+Served asset /sortable/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:31:21 +0400
+Served asset /comments/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/categories.js?body=1" for 127.0.0.1 at 2012-09-23 19:31:21 +0400
+Served asset /categories.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-23 19:31:21 +0400
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2012-09-23 19:31:21 +0400
+Served asset /products.js - 304 Not Modified (0ms)
+
+
+Started GET "/categories/2222" for 127.0.0.1 at 2012-09-23 19:31:23 +0400
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"2222"}
+  [1m[35mCategory Load (0.3ms)[0m  SELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 2222 LIMIT 1
+Completed 500 Internal Server Error in 1ms
+
+ActiveRecord::RecordNotFound (Couldn't find Category with id=2222):
+  app/controllers/categories_controller.rb:22:in `show'
+
+
+  Rendered /home/monax/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (6.0ms)
+  Rendered /home/monax/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+  Rendered /home/monax/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (25.5ms)
+
+
+Started GET "/categories/2222" for 127.0.0.1 at 2012-09-23 19:31:57 +0400
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"2222"}
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 2222 LIMIT 1[0m
+Completed 500 Internal Server Error in 1ms
+
+ActiveRecord::RecordNotFound (Couldn't find Category with id=2222):
+  app/controllers/categories_controller.rb:22:in `show'
+
+
+  Rendered /home/monax/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (3.4ms)
+  Rendered /home/monax/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+  Rendered /home/monax/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (12.5ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2012-09-23 19:31:59 +0400
+Processing by CategoriesController#index as HTML
+  [1m[35mCategory Load (0.2ms)[0m  SELECT `categories`.* FROM `categories` ORDER BY lft ASC
+  Rendered categories/tree/base/_link.html.haml (1.6ms)
+  Rendered categories/tree/base/_node.html.haml (2.7ms)
+  Rendered categories/tree/base/_link.html.haml (0.5ms)
+  Rendered categories/tree/base/_children.html.haml (0.1ms)
+  Rendered categories/tree/base/_node.html.haml (2.0ms)
+  Rendered categories/tree/base/_link.html.haml (0.5ms)
+  Rendered categories/tree/base/_node.html.haml (1.3ms)
+  Rendered categories/tree/base/_tree.html.haml (0.1ms)
+  Rendered categories/index.html.erb within layouts/application (9.5ms)
+Completed 200 OK in 62ms (Views: 17.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/categories/3-33333" for 127.0.0.1 at 2012-09-23 19:32:01 +0400
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"3-33333"}
+  [1m[36mCategory Load (0.7ms)[0m  [1mSELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 3 LIMIT 1[0m
+  Rendered categories/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 13ms (Views: 9.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-23 19:32:01 +0400
+Served asset /application.css - 304 Not Modified (18ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-23 19:32:01 +0400
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sortable.css?body=1" for 127.0.0.1 at 2012-09-23 19:32:01 +0400
+Served asset /sortable.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:32:01 +0400
+Served asset /tree.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2012-09-23 19:32:02 +0400
+Served asset /categories.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.css?body=1" for 127.0.0.1 at 2012-09-23 19:32:02 +0400
+Served asset /products.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments_tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:32:02 +0400
+Served asset /comments_tree.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-23 19:32:02 +0400
+Served asset /jquery.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-23 19:32:02 +0400
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-09-23 19:32:02 +0400
+Served asset /jquery-ui.js - 304 Not Modified (9ms)
+
+
+Started GET "/assets/jquery.ui.nestedSortable.js?body=1" for 127.0.0.1 at 2012-09-23 19:32:02 +0400
+Served asset /jquery.ui.nestedSortable.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sortable/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:32:02 +0400
+Served asset /sortable/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:32:02 +0400
+Served asset /comments/base.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2012-09-23 19:32:02 +0400
+Served asset /products.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/categories.js?body=1" for 127.0.0.1 at 2012-09-23 19:32:02 +0400
+Served asset /categories.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-23 19:32:02 +0400
+Served asset /application.js - 304 Not Modified (5ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2012-09-23 19:32:03 +0400
+Processing by CategoriesController#index as HTML
+  [1m[35mCategory Load (0.1ms)[0m  SELECT `categories`.* FROM `categories` ORDER BY lft ASC
+  Rendered categories/tree/base/_link.html.haml (2.0ms)
+  Rendered categories/tree/base/_node.html.haml (4.1ms)
+  Rendered categories/tree/base/_link.html.haml (0.5ms)
+  Rendered categories/tree/base/_children.html.haml (0.1ms)
+  Rendered categories/tree/base/_node.html.haml (1.9ms)
+  Rendered categories/tree/base/_link.html.haml (0.5ms)
+  Rendered categories/tree/base/_node.html.haml (1.4ms)
+  Rendered categories/tree/base/_tree.html.haml (0.1ms)
+  Rendered categories/index.html.erb within layouts/application (12.5ms)
+Completed 200 OK in 24ms (Views: 22.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2012-09-23 19:32:04 +0400
+Served asset /categories.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-23 19:32:04 +0400
+Served asset /application.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-23 19:32:04 +0400
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.css?body=1" for 127.0.0.1 at 2012-09-23 19:32:04 +0400
+Served asset /products.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:32:04 +0400
+Served asset /tree.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sortable.css?body=1" for 127.0.0.1 at 2012-09-23 19:32:04 +0400
+Served asset /sortable.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments_tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:32:04 +0400
+Served asset /comments_tree.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-23 19:32:04 +0400
+Served asset /jquery.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-23 19:32:04 +0400
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-09-23 19:32:04 +0400
+Served asset /jquery-ui.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/jquery.ui.nestedSortable.js?body=1" for 127.0.0.1 at 2012-09-23 19:32:04 +0400
+Served asset /jquery.ui.nestedSortable.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sortable/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:32:04 +0400
+Served asset /sortable/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:32:04 +0400
+Served asset /comments/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/categories.js?body=1" for 127.0.0.1 at 2012-09-23 19:32:04 +0400
+Served asset /categories.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2012-09-23 19:32:04 +0400
+Served asset /products.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-23 19:32:04 +0400
+Served asset /application.js - 304 Not Modified (3ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Migrating to CreateCategories (20120923114259)
+Migrating to CreateProducts (20120923114634)
+Migrating to AddColumnToCategories (20120923122721)
+Migrating to AddColumnsToCategories (20120923124221)
+Migrating to AddSlugToCategory (20120923153850)
+  [1m[35m (359.8ms)[0m  ALTER TABLE `categories` ADD `slug` varchar(255)
+  [1m[36m (53.9ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120923153850')[0m
+  [1m[35m (0.5ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations` 
+
+
+Started GET "/categories/manage" for 127.0.0.1 at 2012-09-23 19:41:18 +0400
+
+ActionController::RoutingError (undefined method `friendly_id' for #<Class:0x9b7abc0>):
+  app/models/category.rb:5:in `<class:Category>'
+  app/models/category.rb:1:in `<top (required)>'
+  app/controllers/categories_controller.rb:1:in `<top (required)>'
+
+
+  Rendered /home/monax/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/categories/manage" for 127.0.0.1 at 2012-09-23 19:44:32 +0400
+
+ActionController::RoutingError (undefined method `friendly_id' for #<Class:0x91c24e8>):
+  app/models/category.rb:5:in `<class:Category>'
+  app/models/category.rb:1:in `<top (required)>'
+  app/controllers/categories_controller.rb:1:in `<top (required)>'
+
+
+  Rendered /home/monax/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/categories/manage" for 127.0.0.1 at 2012-09-23 19:44:35 +0400
+
+NoMethodError (undefined method `key?' for nil:NilClass):
+  actionpack (3.2.2) lib/action_controller/metal/hide_actions.rb:36:in `visible_action?'
+  actionpack (3.2.2) lib/action_controller/metal/hide_actions.rb:18:in `method_for_action'
+  actionpack (3.2.2) lib/action_controller/metal/implicit_render.rb:14:in `method_for_action'
+  actionpack (3.2.2) lib/action_controller/metal/compatibility.rb:61:in `method_for_action'
+  actionpack (3.2.2) lib/abstract_controller/base.rb:115:in `process'
+  actionpack (3.2.2) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.2) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.2) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.2) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.2) lib/action_dispatch/routing/route_set.rb:67:in `call'
+  actionpack (3.2.2) lib/action_dispatch/routing/route_set.rb:67:in `dispatch'
+  actionpack (3.2.2) lib/action_dispatch/routing/route_set.rb:30:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `each'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.2) lib/action_dispatch/routing/route_set.rb:594:in `call'
+  sass (3.2.1) lib/sass/plugin/rack.rb:54:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.1) lib/rack/etag.rb:23:in `call'
+  rack (1.4.1) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:205:in `context'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:200:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/cookies.rb:338:in `call'
+  activerecord (3.2.2) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:443:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.2) lib/active_support/callbacks.rb:405:in `_run__662994110__call__207898248__callbacks'
+  activesupport (3.2.2) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.2) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.2) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.2) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.2) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.2) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.2) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/static.rb:61:in `call'
+  railties (3.2.2) lib/rails/engine.rb:479:in `call'
+  railties (3.2.2) lib/rails/application.rb:220:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.2) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.4.1) lib/rack/handler/webrick.rb:59:in `service'
+  /home/monax/.rvm/rubies/ruby-1.9.3-p0/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  /home/monax/.rvm/rubies/ruby-1.9.3-p0/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  /home/monax/.rvm/rubies/ruby-1.9.3-p0/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered /home/monax/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.8ms)
+  Rendered /home/monax/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (21.2ms)
+  Rendered /home/monax/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (32.3ms)
+
+
+Started GET "/categories/new" for 127.0.0.1 at 2012-09-23 19:44:46 +0400
+
+NoMethodError (undefined method `key?' for nil:NilClass):
+  actionpack (3.2.2) lib/action_controller/metal/hide_actions.rb:36:in `visible_action?'
+  actionpack (3.2.2) lib/action_controller/metal/hide_actions.rb:18:in `method_for_action'
+  actionpack (3.2.2) lib/action_controller/metal/implicit_render.rb:14:in `method_for_action'
+  actionpack (3.2.2) lib/action_controller/metal/compatibility.rb:61:in `method_for_action'
+  actionpack (3.2.2) lib/abstract_controller/base.rb:115:in `process'
+  actionpack (3.2.2) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.2) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.2) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.2) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.2) lib/action_dispatch/routing/route_set.rb:67:in `call'
+  actionpack (3.2.2) lib/action_dispatch/routing/route_set.rb:67:in `dispatch'
+  actionpack (3.2.2) lib/action_dispatch/routing/route_set.rb:30:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `each'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.2) lib/action_dispatch/routing/route_set.rb:594:in `call'
+  sass (3.2.1) lib/sass/plugin/rack.rb:54:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.1) lib/rack/etag.rb:23:in `call'
+  rack (1.4.1) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:205:in `context'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:200:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/cookies.rb:338:in `call'
+  activerecord (3.2.2) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:443:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.2) lib/active_support/callbacks.rb:405:in `_run__662994110__call__207898248__callbacks'
+  activesupport (3.2.2) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.2) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.2) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.2) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.2) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.2) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.2) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/static.rb:61:in `call'
+  railties (3.2.2) lib/rails/engine.rb:479:in `call'
+  railties (3.2.2) lib/rails/application.rb:220:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.2) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.4.1) lib/rack/handler/webrick.rb:59:in `service'
+  /home/monax/.rvm/rubies/ruby-1.9.3-p0/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  /home/monax/.rvm/rubies/ruby-1.9.3-p0/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  /home/monax/.rvm/rubies/ruby-1.9.3-p0/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered /home/monax/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (3.3ms)
+  Rendered /home/monax/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+  Rendered /home/monax/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-09-23 19:46:21 +0400
+
+NoMethodError (undefined method `key?' for nil:NilClass):
+  actionpack (3.2.2) lib/action_controller/metal/hide_actions.rb:36:in `visible_action?'
+  actionpack (3.2.2) lib/action_controller/metal/hide_actions.rb:18:in `method_for_action'
+  actionpack (3.2.2) lib/action_controller/metal/implicit_render.rb:14:in `method_for_action'
+  actionpack (3.2.2) lib/action_controller/metal/compatibility.rb:61:in `method_for_action'
+  actionpack (3.2.2) lib/abstract_controller/base.rb:115:in `process'
+  actionpack (3.2.2) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.2) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.2) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.2) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.2) lib/action_dispatch/routing/route_set.rb:67:in `call'
+  actionpack (3.2.2) lib/action_dispatch/routing/route_set.rb:67:in `dispatch'
+  actionpack (3.2.2) lib/action_dispatch/routing/route_set.rb:30:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `each'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.2) lib/action_dispatch/routing/route_set.rb:594:in `call'
+  sass (3.2.1) lib/sass/plugin/rack.rb:54:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.1) lib/rack/etag.rb:23:in `call'
+  rack (1.4.1) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:205:in `context'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:200:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/cookies.rb:338:in `call'
+  activerecord (3.2.2) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:443:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.2) lib/active_support/callbacks.rb:405:in `_run__662994110__call__207898248__callbacks'
+  activesupport (3.2.2) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.2) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.2) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.2) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.2) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.2) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.2) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/static.rb:61:in `call'
+  railties (3.2.2) lib/rails/engine.rb:479:in `call'
+  railties (3.2.2) lib/rails/application.rb:220:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.2) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.4.1) lib/rack/handler/webrick.rb:59:in `service'
+  /home/monax/.rvm/rubies/ruby-1.9.3-p0/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  /home/monax/.rvm/rubies/ruby-1.9.3-p0/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  /home/monax/.rvm/rubies/ruby-1.9.3-p0/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered /home/monax/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.9ms)
+  Rendered /home/monax/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+  Rendered /home/monax/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (12.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-09-23 19:47:25 +0400
+
+NoMethodError (undefined method `key?' for nil:NilClass):
+  actionpack (3.2.2) lib/action_controller/metal/hide_actions.rb:36:in `visible_action?'
+  actionpack (3.2.2) lib/action_controller/metal/hide_actions.rb:18:in `method_for_action'
+  actionpack (3.2.2) lib/action_controller/metal/implicit_render.rb:14:in `method_for_action'
+  actionpack (3.2.2) lib/action_controller/metal/compatibility.rb:61:in `method_for_action'
+  actionpack (3.2.2) lib/abstract_controller/base.rb:115:in `process'
+  actionpack (3.2.2) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.2) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.2) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.2) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.2) lib/action_dispatch/routing/route_set.rb:67:in `call'
+  actionpack (3.2.2) lib/action_dispatch/routing/route_set.rb:67:in `dispatch'
+  actionpack (3.2.2) lib/action_dispatch/routing/route_set.rb:30:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `each'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.2) lib/action_dispatch/routing/route_set.rb:594:in `call'
+  sass (3.2.1) lib/sass/plugin/rack.rb:54:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.1) lib/rack/etag.rb:23:in `call'
+  rack (1.4.1) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:205:in `context'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:200:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/cookies.rb:338:in `call'
+  activerecord (3.2.2) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:443:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.2) lib/active_support/callbacks.rb:405:in `_run__662994110__call__207898248__callbacks'
+  activesupport (3.2.2) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.2) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.2) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.2) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.2) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.2) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.2) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/static.rb:61:in `call'
+  railties (3.2.2) lib/rails/engine.rb:479:in `call'
+  railties (3.2.2) lib/rails/application.rb:220:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.2) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.4.1) lib/rack/handler/webrick.rb:59:in `service'
+  /home/monax/.rvm/rubies/ruby-1.9.3-p0/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  /home/monax/.rvm/rubies/ruby-1.9.3-p0/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  /home/monax/.rvm/rubies/ruby-1.9.3-p0/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered /home/monax/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.8ms)
+  Rendered /home/monax/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+  Rendered /home/monax/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-09-23 19:49:08 +0400
+
+ActionController::RoutingError (undefined method `friendly_id' for #<Class:0x9aaead4>):
+  app/models/category.rb:5:in `<class:Category>'
+  app/models/category.rb:1:in `<top (required)>'
+  app/controllers/categories_controller.rb:1:in `<top (required)>'
+
+
+  Rendered /home/monax/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-09-23 19:50:20 +0400
+Processing by CategoriesController#index as HTML
+  [1m[36mCategory Load (0.6ms)[0m  [1mSELECT `categories`.* FROM `categories` ORDER BY lft ASC[0m
+  Rendered categories/tree/base/_tree.html.haml (1.5ms)
+  Rendered categories/index.html.erb within layouts/application (6.7ms)
+Completed 200 OK in 61ms (Views: 57.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-23 19:50:20 +0400
+Served asset /application.css - 200 OK (23ms)
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2012-09-23 19:50:20 +0400
+Served asset /categories.css - 200 OK (4ms)
+
+
+Started GET "/assets/tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:50:20 +0400
+Served asset /tree.css - 200 OK (11ms)
+
+
+Started GET "/assets/products.css?body=1" for 127.0.0.1 at 2012-09-23 19:50:20 +0400
+Served asset /products.css - 200 OK (2ms)
+
+
+Started GET "/assets/sortable.css?body=1" for 127.0.0.1 at 2012-09-23 19:50:20 +0400
+Served asset /sortable.css - 200 OK (4ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-23 19:50:20 +0400
+Served asset /scaffolds.css - 200 OK (3ms)
+
+
+Started GET "/assets/comments_tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:50:20 +0400
+Served asset /comments_tree.css - 200 OK (2ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-23 19:50:20 +0400
+Served asset /jquery.js - 200 OK (13ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-09-23 19:50:20 +0400
+Served asset /jquery-ui.js - 200 OK (9ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-23 19:50:20 +0400
+Served asset /jquery_ujs.js - 200 OK (5ms)
+
+
+Started GET "/assets/jquery.ui.nestedSortable.js?body=1" for 127.0.0.1 at 2012-09-23 19:50:20 +0400
+Served asset /jquery.ui.nestedSortable.js - 200 OK (3ms)
+
+
+Started GET "/assets/sortable/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:50:20 +0400
+Served asset /sortable/base.js - 200 OK (2ms)
+
+
+Started GET "/assets/comments/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:50:20 +0400
+Served asset /comments/base.js - 200 OK (2ms)
+
+
+Started GET "/assets/categories.js?body=1" for 127.0.0.1 at 2012-09-23 19:50:20 +0400
+Served asset /categories.js - 200 OK (2ms)
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2012-09-23 19:50:20 +0400
+Served asset /products.js - 200 OK (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-23 19:50:20 +0400
+Served asset /application.js - 200 OK (41ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-09-23 19:50:33 +0400
+Processing by CategoriesController#index as HTML
+  [1m[35mCategory Load (0.2ms)[0m  SELECT `categories`.* FROM `categories` ORDER BY lft ASC
+  Rendered categories/tree/base/_tree.html.haml (0.1ms)
+  Rendered categories/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 15ms (Views: 13.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-23 19:50:33 +0400
+Served asset /application.css - 200 OK (10ms)
+
+
+Started GET "/assets/sortable.css?body=1" for 127.0.0.1 at 2012-09-23 19:50:34 +0400
+Served asset /sortable.css - 200 OK (0ms)
+
+
+Started GET "/assets/products.css?body=1" for 127.0.0.1 at 2012-09-23 19:50:34 +0400
+Served asset /products.css - 200 OK (0ms)
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2012-09-23 19:50:34 +0400
+Served asset /categories.css - 200 OK (0ms)
+
+
+Started GET "/assets/tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:50:34 +0400
+Served asset /tree.css - 200 OK (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-23 19:50:34 +0400
+Served asset /scaffolds.css - 200 OK (0ms)
+
+
+Started GET "/assets/comments_tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:50:34 +0400
+Served asset /comments_tree.css - 200 OK (5ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-23 19:50:34 +0400
+Served asset /jquery.js - 200 OK (2ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-23 19:50:34 +0400
+Served asset /jquery_ujs.js - 200 OK (1ms)
+
+
+Started GET "/assets/jquery.ui.nestedSortable.js?body=1" for 127.0.0.1 at 2012-09-23 19:50:34 +0400
+Served asset /jquery.ui.nestedSortable.js - 200 OK (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-09-23 19:50:34 +0400
+Served asset /jquery-ui.js - 200 OK (1ms)
+
+
+Started GET "/assets/sortable/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:50:34 +0400
+Served asset /sortable/base.js - 200 OK (0ms)
+
+
+Started GET "/assets/comments/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:50:34 +0400
+Served asset /comments/base.js - 200 OK (0ms)
+
+
+Started GET "/assets/categories.js?body=1" for 127.0.0.1 at 2012-09-23 19:50:34 +0400
+Served asset /categories.js - 200 OK (0ms)
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2012-09-23 19:50:34 +0400
+Served asset /products.js - 200 OK (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-23 19:50:34 +0400
+Served asset /application.js - 200 OK (3ms)
+
+
+Started GET "/categories/new" for 127.0.0.1 at 2012-09-23 19:50:36 +0400
+Processing by CategoriesController#new as HTML
+  Rendered categories/_form.html.erb (159.8ms)
+  Rendered categories/new.html.erb within layouts/application (161.2ms)
+Completed 200 OK in 188ms (Views: 172.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-23 19:50:36 +0400
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started POST "/categories" for 127.0.0.1 at 2012-09-23 19:50:47 +0400
+Processing by CategoriesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"oHAIrik0v3KswWcp7LKJ0aWFkVq1DueHLEo+7Y5/+2g=", "category"=>{"title"=>"category 1", "description"=>"sdf gsdfgksdhfglksdghls"}, "commit"=>"Create Category"}
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mCategory Load (20.2ms)[0m  SELECT `categories`.* FROM `categories` WHERE (`slug` = 'category-1' OR `slug` LIKE 'category-1--%') ORDER BY LENGTH(`slug`) DESC, `slug` DESC LIMIT 1
+  [1m[36mCategory Load (0.4ms)[0m  [1mSELECT `categories`.* FROM `categories` ORDER BY `rgt` desc LIMIT 1 FOR UPDATE[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `categories` (`created_at`, `depth`, `description`, `lft`, `parent_id`, `rgt`, `slug`, `title`, `updated_at`) VALUES ('2012-09-23 15:50:47', NULL, 'sdf gsdfgksdhfglksdghls', 1, NULL, 2, 'category-1', 'category 1', '2012-09-23 15:50:47')
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 4 LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE `categories` SET `depth` = 0 WHERE `categories`.`id` = 4 ORDER BY `lft`
+  [1m[36m (61.7ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/categories/category-1
+Completed 302 Found in 212ms (ActiveRecord: 83.2ms)
+
+
+Started GET "/categories/category-1" for 127.0.0.1 at 2012-09-23 19:50:47 +0400
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"category-1"}
+  [1m[35mCategory Load (0.6ms)[0m  SELECT `categories`.* FROM `categories` WHERE `categories`.`slug` = 'category-1' LIMIT 1
+  Rendered categories/show.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 18ms (Views: 15.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-23 19:50:47 +0400
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2012-09-23 19:50:50 +0400
+Processing by CategoriesController#index as HTML
+  [1m[36mCategory Load (0.3ms)[0m  [1mSELECT `categories`.* FROM `categories` ORDER BY lft ASC[0m
+  Rendered categories/tree/base/_link.html.haml (3.2ms)
+  Rendered categories/tree/base/_node.html.haml (5.3ms)
+  Rendered categories/tree/base/_tree.html.haml (0.1ms)
+  Rendered categories/index.html.erb within layouts/application (8.9ms)
+Completed 200 OK in 48ms (Views: 46.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-23 19:50:50 +0400
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/categories/new" for 127.0.0.1 at 2012-09-23 19:50:52 +0400
+Processing by CategoriesController#new as HTML
+  Rendered categories/_form.html.erb (5.6ms)
+  Rendered categories/new.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 21ms (Views: 20.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-23 19:50:52 +0400
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started POST "/categories" for 127.0.0.1 at 2012-09-23 19:51:05 +0400
+Processing by CategoriesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"oHAIrik0v3KswWcp7LKJ0aWFkVq1DueHLEo+7Y5/+2g=", "category"=>{"title"=>"categpry second", "description"=>" dlgdfgkfgl ksdfglsdfhgsldkgs"}, "commit"=>"Create Category"}
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mCategory Load (0.4ms)[0m  [1mSELECT `categories`.* FROM `categories` WHERE (`slug` = 'categpry-second' OR `slug` LIKE 'categpry-second--%') ORDER BY LENGTH(`slug`) DESC, `slug` DESC LIMIT 1[0m
+  [1m[35mCategory Load (0.3ms)[0m  SELECT `categories`.* FROM `categories` ORDER BY `rgt` desc LIMIT 1 FOR UPDATE
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `categories` (`created_at`, `depth`, `description`, `lft`, `parent_id`, `rgt`, `slug`, `title`, `updated_at`) VALUES ('2012-09-23 15:51:05', NULL, ' dlgdfgkfgl ksdfglsdfhgsldkgs', 3, NULL, 4, 'categpry-second', 'categpry second', '2012-09-23 15:51:05')[0m
+  [1m[35mCategory Load (0.5ms)[0m  SELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 5 LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE `categories` SET `depth` = 0 WHERE `categories`.`id` = 5 ORDER BY `lft`[0m
+  [1m[35m (200.3ms)[0m  COMMIT
+Redirected to http://localhost:3000/categories/categpry-second
+Completed 302 Found in 209ms (ActiveRecord: 202.1ms)
+
+
+Started GET "/categories/categpry-second" for 127.0.0.1 at 2012-09-23 19:51:05 +0400
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"categpry-second"}
+  [1m[36mCategory Load (0.3ms)[0m  [1mSELECT `categories`.* FROM `categories` WHERE `categories`.`slug` = 'categpry-second' LIMIT 1[0m
+  Rendered categories/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 13ms (Views: 11.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-23 19:51:05 +0400
+Served asset /jquery.js - 304 Not Modified (2ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2012-09-23 19:51:12 +0400
+Processing by CategoriesController#index as HTML
+  [1m[35mCategory Load (0.3ms)[0m  SELECT `categories`.* FROM `categories` ORDER BY lft ASC
+  Rendered categories/tree/base/_link.html.haml (0.7ms)
+  Rendered categories/tree/base/_node.html.haml (1.6ms)
+  Rendered categories/tree/base/_link.html.haml (0.4ms)
+  Rendered categories/tree/base/_node.html.haml (1.2ms)
+  Rendered categories/tree/base/_tree.html.haml (0.1ms)
+  Rendered categories/index.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 18ms (Views: 17.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-23 19:51:12 +0400
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/categories/new" for 127.0.0.1 at 2012-09-23 19:51:13 +0400
+Processing by CategoriesController#new as HTML
+  Rendered categories/_form.html.erb (5.4ms)
+  Rendered categories/new.html.erb within layouts/application (6.4ms)
+Completed 200 OK in 45ms (Views: 44.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-23 19:51:13 +0400
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started POST "/categories" for 127.0.0.1 at 2012-09-23 19:51:25 +0400
+Processing by CategoriesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"oHAIrik0v3KswWcp7LKJ0aWFkVq1DueHLEo+7Y5/+2g=", "category"=>{"title"=>"third category", "description"=>"rgk sgsdfg sdlkgsdlfkghslgkshglksh gslkg sldg sdlg sl gsdlkg hdl khsdlgsdhf"}, "commit"=>"Create Category"}
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mCategory Load (0.7ms)[0m  SELECT `categories`.* FROM `categories` WHERE (`slug` = 'third-category' OR `slug` LIKE 'third-category--%') ORDER BY LENGTH(`slug`) DESC, `slug` DESC LIMIT 1
+  [1m[36mCategory Load (0.4ms)[0m  [1mSELECT `categories`.* FROM `categories` ORDER BY `rgt` desc LIMIT 1 FOR UPDATE[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `categories` (`created_at`, `depth`, `description`, `lft`, `parent_id`, `rgt`, `slug`, `title`, `updated_at`) VALUES ('2012-09-23 15:51:25', NULL, 'rgk sgsdfg sdlkgsdlfkghslgkshglksh gslkg sldg sdlg sl gsdlkg hdl khsdlgsdhf', 5, NULL, 6, 'third-category', 'third category', '2012-09-23 15:51:25')
+  [1m[36mCategory Load (0.4ms)[0m  [1mSELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 6 LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE `categories` SET `depth` = 0 WHERE `categories`.`id` = 6 ORDER BY `lft`
+  [1m[36m (206.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/categories/third-category
+Completed 302 Found in 215ms (ActiveRecord: 208.5ms)
+
+
+Started GET "/categories/third-category" for 127.0.0.1 at 2012-09-23 19:51:25 +0400
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"third-category"}
+  [1m[35mCategory Load (0.3ms)[0m  SELECT `categories`.* FROM `categories` WHERE `categories`.`slug` = 'third-category' LIMIT 1
+  Rendered categories/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 14ms (Views: 12.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-23 19:51:25 +0400
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2012-09-23 19:51:27 +0400
+Processing by CategoriesController#index as HTML
+  [1m[36mCategory Load (0.3ms)[0m  [1mSELECT `categories`.* FROM `categories` ORDER BY lft ASC[0m
+  Rendered categories/tree/base/_link.html.haml (0.7ms)
+  Rendered categories/tree/base/_node.html.haml (2.8ms)
+  Rendered categories/tree/base/_link.html.haml (0.4ms)
+  Rendered categories/tree/base/_node.html.haml (1.2ms)
+  Rendered categories/tree/base/_link.html.haml (0.4ms)
+  Rendered categories/tree/base/_node.html.haml (1.1ms)
+  Rendered categories/tree/base/_tree.html.haml (0.1ms)
+  Rendered categories/index.html.erb within layouts/application (10.1ms)
+Completed 200 OK in 24ms (Views: 22.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-23 19:51:27 +0400
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/categories/manage" for 127.0.0.1 at 2012-09-23 19:51:29 +0400
+Processing by CategoriesController#manage as HTML
+  [1m[35mCategory Load (0.2ms)[0m  SELECT `categories`.* FROM `categories` ORDER BY lft ASC
+  Rendered categories/sortable/base/_controls.html.haml (2.2ms)
+  Rendered categories/sortable/base/_link.html.haml (5.1ms)
+  Rendered categories/sortable/base/_node.html.haml (7.4ms)
+  Rendered categories/sortable/base/_controls.html.haml (0.8ms)
+  Rendered categories/sortable/base/_link.html.haml (2.1ms)
+  Rendered categories/sortable/base/_node.html.haml (3.0ms)
+  Rendered categories/sortable/base/_controls.html.haml (0.8ms)
+  Rendered categories/sortable/base/_link.html.haml (1.9ms)
+  Rendered categories/sortable/base/_node.html.haml (2.8ms)
+  Rendered categories/sortable/base/_new.html.haml (1.5ms)
+  Rendered categories/sortable/base/_tree.html.haml (5.5ms)
+  Rendered categories/manage.html.erb within layouts/application (22.8ms)
+Completed 200 OK in 40ms (Views: 36.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-23 19:51:29 +0400
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/iconza/blue/add.png" for 127.0.0.1 at 2012-09-23 19:51:29 +0400
+Served asset /iconza/blue/add.png - 304 Not Modified (5ms)
+
+
+Started GET "/assets/iconza/blue/edit.png" for 127.0.0.1 at 2012-09-23 19:51:29 +0400
+Served asset /iconza/blue/edit.png - 304 Not Modified (44ms)
+
+
+Started GET "/assets/iconza/blue/move.png" for 127.0.0.1 at 2012-09-23 19:51:29 +0400
+Served asset /iconza/blue/move.png - 304 Not Modified (5ms)
+
+
+Started GET "/assets/iconza/blue/delete.png" for 127.0.0.1 at 2012-09-23 19:51:29 +0400
+Served asset /iconza/blue/delete.png - 304 Not Modified (3ms)
+
+
+Started POST "/categories/rebuild" for 127.0.0.1 at 2012-09-23 19:51:32 +0400
+Processing by CategoriesController#rebuild as JS
+  Parameters: {"id"=>"5_category", "next_id"=>"4_category"}
+  [1m[36mCategory Load (0.6ms)[0m  [1mSELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 5 LIMIT 1[0m
+  [1m[35mCategory Load (0.5ms)[0m  SELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 4 LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mCategory Load (0.6ms)[0m  SELECT `lft`, `rgt`, `parent_id` FROM `categories` WHERE `categories`.`id` = 4 LIMIT 1 FOR UPDATE
+  [1m[36mCategory Load (0.5ms)[0m  [1mSELECT `lft`, `rgt`, `parent_id` FROM `categories` WHERE `categories`.`id` = 5 LIMIT 1 FOR UPDATE[0m
+  [1m[35mSQL (0.7ms)[0m  UPDATE `categories` SET `lft` = CASE WHEN `lft` BETWEEN 1 AND 2 THEN `lft` + 4 - 2 WHEN `lft` BETWEEN 3 AND 4 THEN `lft` + 1 - 3 ELSE `lft` END, `rgt` = CASE WHEN `rgt` BETWEEN 1 AND 2 THEN `rgt` + 4 - 2 WHEN `rgt` BETWEEN 3 AND 4 THEN `rgt` + 1 - 3 ELSE `rgt` END, `parent_id` = CASE WHEN id = 5 THEN NULL ELSE `parent_id` END ORDER BY `lft`
+  [1m[36m (68.1ms)[0m  [1mCOMMIT[0m
+  [1m[35mCategory Load (0.6ms)[0m  SELECT `lft`, `rgt`, `parent_id` FROM `categories` WHERE `categories`.`id` = 4 LIMIT 1 FOR UPDATE
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mCategory Load (0.5ms)[0m  SELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 5 LIMIT 1
+  [1m[36mSQL (0.6ms)[0m  [1mUPDATE `categories` SET `depth` = 0 WHERE `categories`.`id` = 5 ORDER BY `lft`[0m
+  [1m[35m (38.0ms)[0m  COMMIT
+  [1m[36mCategory Load (0.7ms)[0m  [1mSELECT `categories`.* FROM `categories` WHERE `categories`.`parent_id` = 5 ORDER BY lft[0m
+  [1m[35mCategory Load (0.4ms)[0m  SELECT `lft`, `rgt`, `parent_id` FROM `categories` WHERE `categories`.`id` = 5 LIMIT 1 FOR UPDATE
+  Rendered text template (0.0ms)
+Completed 200 OK in 167ms (Views: 1.9ms | ActiveRecord: 112.3ms)
+
+
+Started POST "/categories/rebuild" for 127.0.0.1 at 2012-09-23 19:51:34 +0400
+Processing by CategoriesController#rebuild as JS
+  Parameters: {"id"=>"4_category", "parent_id"=>"5_category"}
+  [1m[36mCategory Load (0.3ms)[0m  [1mSELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 4 LIMIT 1[0m
+  [1m[35mCategory Load (0.6ms)[0m  SELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 5 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mCategory Load (0.2ms)[0m  SELECT `lft`, `rgt`, `parent_id` FROM `categories` WHERE `categories`.`id` = 5 LIMIT 1 FOR UPDATE
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT `lft`, `rgt`, `parent_id` FROM `categories` WHERE `categories`.`id` = 4 LIMIT 1 FOR UPDATE[0m
+  [1m[35mSQL (24.3ms)[0m  UPDATE `categories` SET `lft` = CASE WHEN `lft` BETWEEN 2 AND 2 THEN `lft` + 4 - 2 WHEN `lft` BETWEEN 3 AND 4 THEN `lft` + 2 - 3 ELSE `lft` END, `rgt` = CASE WHEN `rgt` BETWEEN 2 AND 2 THEN `rgt` + 4 - 2 WHEN `rgt` BETWEEN 3 AND 4 THEN `rgt` + 2 - 3 ELSE `rgt` END, `parent_id` = CASE WHEN id = 4 THEN 5 ELSE `parent_id` END ORDER BY `lft`
+  [1m[36m (114.1ms)[0m  [1mCOMMIT[0m
+  [1m[35mCategory Load (0.5ms)[0m  SELECT `lft`, `rgt`, `parent_id` FROM `categories` WHERE `categories`.`id` = 5 LIMIT 1 FOR UPDATE
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mCategory Load (0.6ms)[0m  SELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 4 LIMIT 1
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM `categories` WHERE (`categories`.`lft` <= 2 AND `categories`.`rgt` >= 3) AND (`categories`.id != 4)[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE `categories` SET `depth` = 1 WHERE `categories`.`id` = 4 ORDER BY `lft`
+  [1m[36m (40.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `categories` WHERE (`categories`.`lft` <= 2 AND `categories`.`rgt` >= 3) AND (`categories`.id != 4)
+  [1m[36mCategory Load (0.3ms)[0m  [1mSELECT `categories`.* FROM `categories` WHERE `categories`.`parent_id` = 4 ORDER BY lft[0m
+  [1m[35mCategory Load (0.4ms)[0m  SELECT `lft`, `rgt`, `parent_id` FROM `categories` WHERE `categories`.`id` = 4 LIMIT 1 FOR UPDATE
+  Rendered text template (0.0ms)
+Completed 200 OK in 205ms (Views: 0.5ms | ActiveRecord: 183.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-09-23 19:51:37 +0400
+Processing by CategoriesController#index as HTML
+  [1m[36mCategory Load (0.4ms)[0m  [1mSELECT `categories`.* FROM `categories` ORDER BY lft ASC[0m
+  Rendered categories/tree/base/_link.html.haml (0.7ms)
+  Rendered categories/tree/base/_node.html.haml (1.8ms)
+  Rendered categories/tree/base/_link.html.haml (0.5ms)
+  Rendered categories/tree/base/_children.html.haml (0.9ms)
+  Rendered categories/tree/base/_node.html.haml (2.8ms)
+  Rendered categories/tree/base/_link.html.haml (0.7ms)
+  Rendered categories/tree/base/_node.html.haml (1.5ms)
+  Rendered categories/tree/base/_tree.html.haml (0.1ms)
+  Rendered categories/index.html.erb within layouts/application (10.1ms)
+Completed 200 OK in 23ms (Views: 21.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-23 19:51:37 +0400
+Served asset /jquery.js - 304 Not Modified (31ms)
+
+
+Started GET "/categories/manage" for 127.0.0.1 at 2012-09-23 19:51:41 +0400
+Processing by CategoriesController#manage as HTML
+  [1m[35mCategory Load (0.1ms)[0m  SELECT `categories`.* FROM `categories` ORDER BY lft ASC
+  Rendered categories/sortable/base/_controls.html.haml (1.0ms)
+  Rendered categories/sortable/base/_link.html.haml (2.5ms)
+  Rendered categories/sortable/base/_node.html.haml (3.5ms)
+  Rendered categories/sortable/base/_controls.html.haml (0.6ms)
+  Rendered categories/sortable/base/_link.html.haml (1.7ms)
+  Rendered categories/sortable/base/_children.html.haml (0.9ms)
+  Rendered categories/sortable/base/_node.html.haml (4.2ms)
+  Rendered categories/sortable/base/_controls.html.haml (0.9ms)
+  Rendered categories/sortable/base/_link.html.haml (2.3ms)
+  Rendered categories/sortable/base/_node.html.haml (3.2ms)
+  Rendered categories/sortable/base/_new.html.haml (0.4ms)
+  Rendered categories/sortable/base/_tree.html.haml (1.8ms)
+  Rendered categories/manage.html.erb within layouts/application (16.0ms)
+Completed 200 OK in 32ms (Views: 30.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-23 19:51:41 +0400
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/iconza/blue/add.png" for 127.0.0.1 at 2012-09-23 19:51:41 +0400
+Served asset /iconza/blue/add.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/iconza/gray/delete.png" for 127.0.0.1 at 2012-09-23 19:51:41 +0400
+Served asset /iconza/gray/delete.png - 304 Not Modified (6ms)
+
+
+Started POST "/categories/rebuild" for 127.0.0.1 at 2012-09-23 19:51:44 +0400
+Processing by CategoriesController#rebuild as JS
+  Parameters: {"id"=>"6_category", "parent_id"=>"4_category"}
+  [1m[36mCategory Load (0.4ms)[0m  [1mSELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 6 LIMIT 1[0m
+  [1m[35mCategory Load (0.2ms)[0m  SELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 4 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mCategory Load (0.2ms)[0m  SELECT `lft`, `rgt`, `parent_id` FROM `categories` WHERE `categories`.`id` = 4 LIMIT 1 FOR UPDATE
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT `lft`, `rgt`, `parent_id` FROM `categories` WHERE `categories`.`id` = 6 LIMIT 1 FOR UPDATE[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE `categories` SET `lft` = CASE WHEN `lft` BETWEEN 3 AND 4 THEN `lft` + 6 - 4 WHEN `lft` BETWEEN 5 AND 6 THEN `lft` + 3 - 5 ELSE `lft` END, `rgt` = CASE WHEN `rgt` BETWEEN 3 AND 4 THEN `rgt` + 6 - 4 WHEN `rgt` BETWEEN 5 AND 6 THEN `rgt` + 3 - 5 ELSE `rgt` END, `parent_id` = CASE WHEN id = 6 THEN 4 ELSE `parent_id` END ORDER BY `lft`
+  [1m[36m (55.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mCategory Load (0.5ms)[0m  SELECT `lft`, `rgt`, `parent_id` FROM `categories` WHERE `categories`.`id` = 4 LIMIT 1 FOR UPDATE
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mCategory Load (0.4ms)[0m  SELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 6 LIMIT 1
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM `categories` WHERE (`categories`.`lft` <= 3 AND `categories`.`rgt` >= 4) AND (`categories`.id != 6)[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE `categories` SET `depth` = 2 WHERE `categories`.`id` = 6 ORDER BY `lft`
+  [1m[36m (67.2ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `categories` WHERE (`categories`.`lft` <= 3 AND `categories`.`rgt` >= 4) AND (`categories`.id != 6)
+  [1m[36mCategory Load (0.4ms)[0m  [1mSELECT `categories`.* FROM `categories` WHERE `categories`.`parent_id` = 6 ORDER BY lft[0m
+  [1m[35mCategory Load (0.3ms)[0m  SELECT `lft`, `rgt`, `parent_id` FROM `categories` WHERE `categories`.`id` = 6 LIMIT 1 FOR UPDATE
+  Rendered text template (0.0ms)
+Completed 200 OK in 147ms (Views: 0.5ms | ActiveRecord: 127.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-09-23 19:51:46 +0400
+Processing by CategoriesController#index as HTML
+  [1m[36mCategory Load (0.4ms)[0m  [1mSELECT `categories`.* FROM `categories` ORDER BY lft ASC[0m
+  Rendered categories/tree/base/_link.html.haml (0.9ms)
+  Rendered categories/tree/base/_node.html.haml (2.0ms)
+  Rendered categories/tree/base/_link.html.haml (1.2ms)
+  Rendered categories/tree/base/_children.html.haml (0.3ms)
+  Rendered categories/tree/base/_node.html.haml (4.4ms)
+  Rendered categories/tree/base/_link.html.haml (0.4ms)
+  Rendered categories/tree/base/_children.html.haml (0.1ms)
+  Rendered categories/tree/base/_node.html.haml (1.8ms)
+  Rendered categories/tree/base/_tree.html.haml (0.1ms)
+  Rendered categories/index.html.erb within layouts/application (12.3ms)
+Completed 200 OK in 25ms (Views: 23.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-23 19:51:46 +0400
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-09-23 19:53:03 +0400
+Processing by CategoriesController#index as HTML
+  [1m[35mCategory Load (0.1ms)[0m  SELECT `categories`.* FROM `categories` ORDER BY lft ASC
+  Rendered categories/tree/base/_link.html.haml (0.8ms)
+  Rendered categories/tree/base/_node.html.haml (1.9ms)
+  Rendered categories/tree/base/_link.html.haml (0.4ms)
+  Rendered categories/tree/base/_children.html.haml (0.1ms)
+  Rendered categories/tree/base/_node.html.haml (1.9ms)
+  Rendered categories/tree/base/_link.html.haml (0.4ms)
+  Rendered categories/tree/base/_children.html.haml (0.1ms)
+  Rendered categories/tree/base/_node.html.haml (1.8ms)
+  Rendered categories/tree/base/_tree.html.haml (0.1ms)
+  Rendered categories/index.html.erb within layouts/application (9.7ms)
+Compiled scaffolds.css  (43ms)  (pid 12769)
+Compiled application.css  (4ms)  (pid 12769)
+Completed 200 OK in 85ms (Views: 83.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-23 19:53:03 +0400
+Served asset /application.css - 304 Not Modified (22ms)
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2012-09-23 19:53:03 +0400
+Served asset /categories.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.css?body=1" for 127.0.0.1 at 2012-09-23 19:53:03 +0400
+Served asset /products.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-23 19:53:03 +0400
+Served asset /scaffolds.css - 200 OK (3ms)
+
+
+Started GET "/assets/sortable.css?body=1" for 127.0.0.1 at 2012-09-23 19:53:03 +0400
+Served asset /sortable.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:53:03 +0400
+Served asset /tree.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments_tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:53:03 +0400
+Served asset /comments_tree.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-23 19:53:03 +0400
+Served asset /jquery.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-23 19:53:03 +0400
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-09-23 19:53:03 +0400
+Served asset /jquery-ui.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/sortable/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:53:03 +0400
+Served asset /sortable/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.ui.nestedSortable.js?body=1" for 127.0.0.1 at 2012-09-23 19:53:03 +0400
+Served asset /jquery.ui.nestedSortable.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:53:03 +0400
+Served asset /comments/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/categories.js?body=1" for 127.0.0.1 at 2012-09-23 19:53:03 +0400
+Served asset /categories.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2012-09-23 19:53:03 +0400
+Served asset /products.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-23 19:53:03 +0400
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/categories/manage" for 127.0.0.1 at 2012-09-23 19:53:07 +0400
+Processing by CategoriesController#manage as HTML
+  [1m[36mCategory Load (0.3ms)[0m  [1mSELECT `categories`.* FROM `categories` ORDER BY lft ASC[0m
+  Rendered categories/sortable/base/_controls.html.haml (1.1ms)
+  Rendered categories/sortable/base/_link.html.haml (2.6ms)
+  Rendered categories/sortable/base/_node.html.haml (3.7ms)
+  Rendered categories/sortable/base/_controls.html.haml (0.7ms)
+  Rendered categories/sortable/base/_link.html.haml (1.8ms)
+  Rendered categories/sortable/base/_children.html.haml (0.1ms)
+  Rendered categories/sortable/base/_node.html.haml (3.5ms)
+  Rendered categories/sortable/base/_controls.html.haml (0.5ms)
+  Rendered categories/sortable/base/_link.html.haml (1.7ms)
+  Rendered categories/sortable/base/_children.html.haml (0.1ms)
+  Rendered categories/sortable/base/_node.html.haml (3.3ms)
+  Rendered categories/sortable/base/_new.html.haml (0.4ms)
+  Rendered categories/sortable/base/_tree.html.haml (1.8ms)
+  Rendered categories/manage.html.erb within layouts/application (15.8ms)
+Completed 200 OK in 34ms (Views: 29.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-23 19:53:07 +0400
+Served asset /application.css - 304 Not Modified (31ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-23 19:53:07 +0400
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.css?body=1" for 127.0.0.1 at 2012-09-23 19:53:07 +0400
+Served asset /products.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2012-09-23 19:53:07 +0400
+Served asset /categories.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:53:07 +0400
+Served asset /tree.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sortable.css?body=1" for 127.0.0.1 at 2012-09-23 19:53:07 +0400
+Served asset /sortable.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments_tree.css?body=1" for 127.0.0.1 at 2012-09-23 19:53:07 +0400
+Served asset /comments_tree.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-23 19:53:07 +0400
+Served asset /jquery.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-23 19:53:07 +0400
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-09-23 19:53:07 +0400
+Served asset /jquery-ui.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/jquery.ui.nestedSortable.js?body=1" for 127.0.0.1 at 2012-09-23 19:53:07 +0400
+Served asset /jquery.ui.nestedSortable.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/comments/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:53:07 +0400
+Served asset /comments/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sortable/base.js?body=1" for 127.0.0.1 at 2012-09-23 19:53:07 +0400
+Served asset /sortable/base.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/categories.js?body=1" for 127.0.0.1 at 2012-09-23 19:53:07 +0400
+Served asset /categories.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2012-09-23 19:53:07 +0400
+Served asset /products.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-23 19:53:07 +0400
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/iconza/blue/add.png" for 127.0.0.1 at 2012-09-23 19:53:07 +0400
+Served asset /iconza/blue/add.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/iconza/blue/move.png" for 127.0.0.1 at 2012-09-23 19:53:07 +0400
+Served asset /iconza/blue/move.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/iconza/blue/edit.png" for 127.0.0.1 at 2012-09-23 19:53:07 +0400
+Served asset /iconza/blue/edit.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/iconza/gray/delete.png" for 127.0.0.1 at 2012-09-23 19:53:07 +0400
+Served asset /iconza/gray/delete.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/iconza/blue/delete.png" for 127.0.0.1 at 2012-09-23 19:53:07 +0400
+Served asset /iconza/blue/delete.png - 304 Not Modified (0ms)

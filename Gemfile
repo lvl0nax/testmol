@@ -18,6 +18,7 @@ gem 'haml-rails'
 
 gem 'awesome_nested_set'
 gem 'the_sortable_tree'
+gem 'friendly_id'
 
 # Gems used only for assets and not required
 # in production environments by default.
