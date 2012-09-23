@@ -14,7 +14,15 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     @product = Product.find(params[:id])
-
+    @category = @product.category
+    @root = @category.root
+    @categories = @root.descendants.nested_set.all.to_a
+    @parents = []
+    tmp = @category
+    while tmp.parent != nil
+      @parents << tmp
+      tmp = tmp.parent
+    end
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @product }

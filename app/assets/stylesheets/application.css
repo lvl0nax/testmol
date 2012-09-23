@@ -14,3 +14,5 @@
 *= require sortable
 *= require comments_tree
 */
+.left{min-height: 300px; display: inline-block; margin-right: 10px;}
+.index{display: inline-block;}

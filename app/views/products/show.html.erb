@@ -1,3 +1,9 @@
+<%= link_to @root.title  , @root  %> 
+<% @parents.reverse.each do |c| %>
+  > <%= link_to c.title , c %> 
+<% end %>
+> <%= link_to @product.title , @product %> 
+
 <p id="notice"><%= notice %></p>
 
 <p>

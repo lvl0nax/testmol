@@ -1,3 +1,8 @@
+<%= link_to @root.title  , @root  %> 
+<% @parents.reverse.each do |c| %>
+  > <%= link_to c.title , c %> 
+<% end %>
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -10,6 +15,30 @@
   <%= @category.description %>
 </p>
 
+
+<h1>Listing products</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Category</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @products.each do |product| %>
+  <tr>
+    <td><%= product.title %></td>
+    <td><%= product.description %></td>
+    <td><%= product.category.title %></td>
+    <td><%= link_to 'Show', product %></td>
+    <td><%= link_to 'Edit', edit_product_path(product) %></td>
+    <td><%= link_to 'Destroy', product, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
 
 <%= link_to 'Edit', edit_category_path(@category) %> |
 <%= link_to 'Back', categories_path %>

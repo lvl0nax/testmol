@@ -7,8 +7,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div class = "left"><%= sortable_tree Category.all, :path => 'categories/tree/base', :new_url => new_category_path, :max_levels => 4 %></div>
+<div class="index">
+	<%= yield %>
+</div>
 
-<%= yield %>
-
+<script type="text/javascript">
+	$(function() {
+		$("li a[title='<%= @category.try(:title) %>']").css("color", "red");
+	});
+</script>
 </body>
 </html>
